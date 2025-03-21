@@ -9,11 +9,12 @@ const Hero = () => {
     <div className='flex flex-col lg:flex-row items-center justify-between px-6 py-10 lg:px-20 min-h-[90dvh] gap-4'>
       {/* Text Section */}
       <div className='lg:max-w-xl hero'>
-        <h1 className='text-4xl font-bold mb-4'>The Better Way to Trade & Invest</h1>
+        <h1 className='text-4xl font-bold mb-4'>A Smarter Approach to Trading & Investing</h1>
         <p className='text-lg text-gray-600 mb-6'>
-          Over time, we have helped over 2 million customers achieve their financial goals by
-          assisting them trade and invest with ease.
+          We&apos;ve empowered over 1.3 million customers to reach their financial goals by making
+          trading and investing effortless.
         </p>
+
         <button
           className='accent-btn !px-6 !py-3 transition'
           onClick={() => navigate("/auth/register")}>

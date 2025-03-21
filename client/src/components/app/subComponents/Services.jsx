@@ -12,30 +12,30 @@ import { fadeIn, staggerFadeIn2 } from "../../../assets/gsap";
 const features = [
   {
     icon: <ArrowTrendingUpIcon className='w-5 h-5' />,
-    title: "Powerful Trading Platforms",
-    description:
-      "Our company offers multiple platform options to cover the needs of each type of trader and investors.",
+    title: "Robust Trading Platforms",
+    description: "Choose from a variety of platforms designed to meet every trader’s unique needs.",
   },
   {
     icon: <CreditCardIcon className='w-5 h-5' />,
-    title: "High leverage",
+    title: "High Leverage",
     description:
-      "Chance to magnify your investment and really win big with super-low spreads to further up your profits.",
+      "Boost your investments with competitive, low-spread options for increased profits.",
   },
   {
     icon: <BoltIcon className='w-5 h-5' />,
-    title: "Fast execution",
-    description: "Super-fast trading software, so you never suffer slippage.",
+    title: "Rapid Execution",
+    description: "Enjoy ultra-fast trading software that minimizes slippage during your trades.",
   },
   {
     icon: <ShieldCheckIcon className='w-5 h-5' />,
-    title: "Ultimate Security",
-    description: "With advanced security systems, we keep your account always protected.",
+    title: "Top-notch Security",
+    description:
+      "Our advanced security measures ensure your account remains safeguarded at all times.",
   },
   {
     icon: <span className='w-5 h-5 scale-125'>{supportIcon}</span>,
-    title: "24/7 live chat Support",
-    description: "Connect with our 24/7 support and Market Analyst on-demand.",
+    title: "24/7 Live Chat Support",
+    description: "Connect anytime with our round-the-clock support and on-demand market analysts.",
   },
 ];
 
@@ -50,7 +50,7 @@ const ServicesSection = () => {
             Explore Our Services
           </Typography>
           <Typography variant='paragraph' className='text-gray-600 max-w-xl mx-auto'>
-            It’s our mission to provide you with a delightful and a successful trading experience!
+            Our mission is to ensure you have a seamless and rewarding trading experience!
           </Typography>
         </div>
 

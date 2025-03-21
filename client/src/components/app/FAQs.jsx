@@ -13,36 +13,35 @@ const FAQs = () => {
   };
   const faqs = [
     {
-      question: "Is there a startup bonus?",
-      answer: "Yes, when you register, you get a $5 startup bonus.",
+      question: "Do you offer a startup bonus?",
+      answer: "Yes, upon registration, you receive a minimum of $5 as a startup bonus.",
     },
     {
-      question: "Can I upgrade my plan after selecting a lower plan?",
+      question: "Can I upgrade my plan after choosing a lower one?",
+      answer: "Yes, you can upgrade your plan after each 24-hour trading cycle is completed.",
+    },
+    {
+      question: "Do I earn a bonus for referrals?",
       answer:
-        "Yes, you will be able to upgrade your plan after each completed trading cycle of 24 hours.",
+        "Yes, you receive a $5 referral bonus for each person who registers and funds their account using your referral link.",
     },
     {
-      question: "Will I get a bonus for referring?",
+      question: "Can I withdraw my deposit?",
+      answer: "Yes, you can withdraw your deposit once the trading cycle is completed.",
+    },
+    {
+      question: "What is the deposit limit?",
+      answer: "The minimum deposit is $50, while the maximum deposit per plan is $1000.",
+    },
+    {
+      question: "How is my money secured and guaranteed to generate profit?",
       answer:
-        "Yes, you get a referral bonus of $5 for every person who registers and funds their account through your referral link.",
+        "Our advanced trading algorithm manages your deposit, ensuring a guaranteed ROI at the end of each trading window.",
     },
     {
-      question: "Will I be able to withdraw my deposit?",
-      answer: "Yes, you can withdraw your deposit after the trading cycle is complete.",
-    },
-    {
-      question: "How much can I deposit?",
-      answer: "The minimum deposit is $50, and the maximum deposit per plan is $1000.",
-    },
-    {
-      question: "How can I guarantee my money is secure and will generate profit?",
+      question: "How do I withdraw my earnings?",
       answer:
-        "When you subscribe to a plan, our professional algorithm trades with your deposit and guarantees ROI on every completed trading window.",
-    },
-    {
-      question: "How can I withdraw?",
-      answer:
-        "You can only withdraw once your profit or ROI reaches the stipulated time scheduled on your payment package.",
+        "Withdrawals are available once your profit or ROI reaches the scheduled time in your selected payment package.",
     },
   ];
 
@@ -51,19 +50,18 @@ const FAQs = () => {
       icon: <QuestionMarkCircleIcon className='w-7 h-7' />,
       title: "FAQs",
       description:
-        "Our Frequently Asked Questions provide you with important know-how on how our platform works interactively.",
+        "Explore our Frequently Asked Questions to gain key insights into how our platform operates.",
     },
     {
       icon: <DocumentIcon className='w-7 h-7' />,
       title: "Guides",
       description:
-        "Our guides walk you through every step to ensure a smooth interaction with our platform.",
+        "Step-by-step guides to help you navigate and maximize your experience on our platform.",
     },
     {
       icon: <span className='w-7 h-7'>{supportIcon}</span>,
       title: "Support Request",
-      description:
-        "Request support 24/7, and we’ll be there to assist you while you grow your income.",
+      description: "Get 24/7 support—we’re here to assist you as you grow your earnings.",
     },
   ];
 
@@ -129,7 +127,7 @@ const FAQs = () => {
               <div className='w-full md:w-8/12 mb-8 md:mb-0'>
                 <h4 className='text-2xl font-bold mb-4'>The Better Way to Trade & Invest</h4>
                 <p>
-                  Join over 2 million customers who have achieved their financial goals by trading
+                  Join over 1.3 million customers who have achieved their financial goals by trading
                   and investing with ease.
                 </p>
               </div>

@@ -9,7 +9,7 @@ const testimonials = [
     role: "Graphic Designer",
     image: Testimony1,
     review:
-      "This platform has revolutionized how I manage my creative projects. The simplicity and efficiency make my workflow so much easier.",
+      "This platform has transformed the way I handle creative projects—its simplicity and efficiency enhance my workflow effortlessly.",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const testimonials = [
     role: "Operations Manager",
     image: Testimony2,
     review:
-      "Working with this team has been a seamless experience. Their tools have boosted our productivity and helped us stay ahead of deadlines.",
+      "Partnering with this team has been seamless. Their tools have significantly improved our productivity and kept us ahead of deadlines.",
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const testimonials = [
     role: "Marketing Specialist",
     image: Testimony3,
     review:
-      "I’ve never used a platform this intuitive before. It’s helped me streamline my campaigns and achieve better results with less effort.",
+      "I've never experienced such an intuitive platform! It streamlines my campaigns, delivering better results with minimal effort.",
   },
 ];
 

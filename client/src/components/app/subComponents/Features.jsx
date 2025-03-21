@@ -27,13 +27,13 @@ const FeaturesSection = () => {
       icon: <ShieldCheckIcon className='w-10 h-10' />,
       title: "Security",
       description:
-        "We use the highest levels of Internet Security, secured by 256-bit SSL encryption to ensure your information is protected from fraud.",
+        "Your data is safeguarded with 256-bit SSL encryption, ensuring top-tier protection against fraud and cyber threats.",
     },
     {
       icon: <KeyIcon className='w-10 h-10' />,
-      title: "Two Factor Auth",
+      title: "Two-Factor Authentication",
       description:
-        "Two-factor authentication (2FA) is enabled by default on all user accounts to securely protect against unauthorized access.",
+        "All user accounts come with default 2FA, adding an extra layer of security against unauthorized access.",
     },
   ];
 
