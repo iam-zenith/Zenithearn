@@ -6,9 +6,10 @@ import nodemailer from 'nodemailer'
 async function generateAccessToken(user) {
     return JWT.sign(user, process.env.JWT_ACCESS_TOKEN_SECRET, { expiresIn: '168h' })
 }
+// todo configure to new mail
 const mail = async (email, subject, html) => {
     const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
+        host: "smtp.gmail.com", // change
         port: 587,
         secure: false, // Use `true` for port 465
         auth: {

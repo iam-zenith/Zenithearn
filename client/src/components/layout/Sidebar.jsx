@@ -93,14 +93,10 @@ function SidebarContent() {
       <Link
         to='/'
         className='mb-2 flex items-center gap-4 p-4 text-text-light hover:scale-105 duration-500 delay-100 transition-all'>
-        <img
-          src={Logo}
-          alt='brand'
-          className='lg:h-10 lg:w-40 m-0 w-20 h-5 object-contain bg-white rounded-sm'
-        />
-        {/* <Typography variant='h6' className='font-extrabold'>
+        <img src={Logo} alt='brand' className='m-0 w-8 h-8 object-cover' />
+        <Typography variant='h6' className='font-extrabold'>
           Zenithearn
-        </Typography> */}
+        </Typography>
       </Link>
       <List className='text-text-light'>
         <ListItem>

@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import Charts from "react-apexcharts";
 import FetchWithAuth from "../../auth/api";
 import Loader from "./Loader";
-import { formatToUTCString } from "../../../../../server/src/helpers";
+import { formatToNewYorkTime } from "../../../assets/helpers";
 
 const PolarChart = () => {
   /**
@@ -155,7 +155,7 @@ const Earning = () => {
           <div className='flex flex-row justify-between'>
             <p className='text-sm text-primary-light capitalize'>Current plan</p>
             <p className='text-sm text-primary-light' title='Expires'>
-              {formatToUTCString(currentPlan?.expiryDate) || "Unavailable"}
+              {formatToNewYorkTime(currentPlan?.expiryDate) || "Unavailable"}
             </p>
           </div>
         </div>

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useNotification } from "../layout/NotificationHelper";
 import { CheckBadgeIcon, XCircleIcon } from "@heroicons/react/24/solid";
 import { Card } from "@material-tailwind/react";
+import { formatToNewYorkTime } from "../../assets/helpers";
 /**
  * ProfilePage component displays the user's profile information.
  * It fetches the user's KYC status and updates the profile accordingly.
@@ -114,11 +115,13 @@ const ProfilePage = () => {
               {user?.active ? "Active" : "Inactive"}
             </p>
             <p>
-              <strong className='text-primary-light'>Registered:</strong> {user?.createdAt}
+              <strong className='text-primary-light'>Registered:</strong>{" "}
+              {formatToNewYorkTime(user?.createdAt)}
             </p>
             {user?.lastSeen && (
               <p>
-                <strong className='text-primary-light'>Last Seen:</strong> {user?.lastSeen}
+                <strong className='text-primary-light'>Last Seen:</strong>{" "}
+                {formatToNewYorkTime(user.lastSeen)}
               </p>
             )}
             {loading ? (

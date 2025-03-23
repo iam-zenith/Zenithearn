@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import FormError from "./subComponents/FormError"; // Replace with your actual path
 // import { isValidPassword } from "../auth/authHelpers";
-import { getDateAfterDays } from "../../assets/helpers";
+import { formatToNewYorkTime, getDateAfterDays } from "../../assets/helpers";
 import useAuth from "../auth/useAuth";
 import FetchWithAuth from "../auth/api";
 import { useNotification } from "../layout/NotificationHelper";
@@ -80,11 +80,11 @@ const PasswordReset = () => {
 
       {/* Last Password Change Info */}
       <p className=''>
-        Last changed on : <strong>{lastPasswordChange}</strong>
+        Last changed on : <strong>{formatToNewYorkTime(lastPasswordChange)}</strong>
       </p>
       {!allowChange && (
         <p>
-          Next change by: <strong>{nextChangeAllowed}</strong>.
+          Next change by: <strong>{formatToNewYorkTime(nextChangeAllowed)}</strong>.
         </p>
       )}
       {/* Password Reset Form */}

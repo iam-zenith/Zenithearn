@@ -27,10 +27,10 @@ function getDateAfterDays(startDate, x) {
     // Add x days in milliseconds
     const resultDate = new Date(start.getTime() + x * 24 * 60 * 60 * 1000);
 
-    // Return the result date
-    return resultDate.toUTCString();
+    // Convert to New York time
+    return resultDate.toLocaleString("en-US", { timeZone: "America/New_York" });
 }
-function formatToUTCString(dateString) {
+function formatToNewYorkTime(dateString) {
     try {
         // Parse the input date string into a Date object
         const date = new Date(dateString);
@@ -40,8 +40,8 @@ function formatToUTCString(dateString) {
             throw new Error('Invalid date format');
         }
 
-        // Convert to UTC string
-        return date.toUTCString();
+        // Convert to New York time
+        return date.toLocaleString("en-US", { timeZone: "America/New_York" });
     } catch (error) {
         return `Error: ${error.message}`;
     }
@@ -63,4 +63,4 @@ function formatTime(seconds) {
         return `${weeks} week${weeks === 1 ? '' : 's'}`;
     }
 }
-export { openEmailClient, getDateAfterDays, formatToUTCString, formatTime }
+export { openEmailClient, getDateAfterDays, formatToNewYorkTime, formatTime }

@@ -45,11 +45,13 @@ export default function NavbarLanding() {
   return (
     <Navbar className='mx-auto w-[100dvw] max-w-screen-2xl px-6 py-3 bg-primary-dark border-0 shadow-accent rounded-md'>
       <div className='flex items-center justify-between text-text-light'>
-        <Typography variant='h6' className='mr-4 cursor-pointer py-1.5 bg-white rounded-sm'>
+        <Typography variant='h6' className='mr-4 cursor-pointer py-1.5 flex items-center'>
           <Link to='/'>
-            <img src='/logo.png' alt='zenithearn_logo' className='w-20 h-5 object-contain' />
+            <img src='/logo.png' alt='zenithearn_logo' className='w-8 h-8 object-cover' />
           </Link>
-          {/* <Link to='/'>Zenithearn</Link> */}
+          <Link to='/' className='hidden lg:flex ml-2'>
+            <p>Zenithearn</p>
+          </Link>
         </Typography>
         <div className='hidden lg:block text-text-light'>
           <NavList />

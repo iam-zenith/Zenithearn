@@ -6,7 +6,7 @@ import useAuth from "./../auth/useAuth";
 import { saveUserToLocal } from "../auth/authHelpers";
 import { QuestionMarkCircleIcon, CheckBadgeIcon, XCircleIcon } from "@heroicons/react/24/solid";
 import FetchWithAuth from "../auth/api";
-import { formatToUTCString } from "../../assets/helpers.js";
+import { formatToNewYorkTime } from "../../assets/helpers.js";
 import { Card } from "@material-tailwind/react";
 /**
  * The `KYCUpload` component handles the upload and management of KYC documents.
@@ -207,7 +207,7 @@ const KYCUpload = () => {
           </p>
           <p>
             <strong className='text-primary-light'>Updated at:</strong>{" "}
-            {formatToUTCString(data?.updatedAt)}
+            {formatToNewYorkTime(data?.updatedAt)}
           </p>
         </div>
       ) : (

@@ -43,11 +43,11 @@ Router.route('/register')
                 verificationToken,
             });
 
-            const verificationLink = `${process.env.CLIENT_URL}/?token=${verificationToken}`;
-            console.log(verificationLink)
+            // const verificationLink = `${process.env.CLIENT_URL}/?token=${verificationToken}`;
+            // console.log(verificationLink)
             // user && await mail(email, 'Verify Your Email', `Please verify your email using this link within the next 24 hours: ${verificationLink}`);
-            // res.status(201).json({ message: 'Registration successful' });
-            res.status(201).json({ message: 'Registration successful. Please verify your email' });
+            res.status(201).json({ message: 'Registration successful' });
+            // res.status(201).json({ message: 'Registration successful. Please verify your email' });
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: 'An error occurred during registration' });
@@ -236,15 +236,15 @@ Router.route('/check-user/:email')
             let newCodeRequest = await createCodeRequest(email, codeRequests)
             newCodeRequest.scheduleDeletion()
             // Uncomment when email is configured
-            const codeSent = await mail(
-                email,
-                'Password Reset',
-                `${user?.fullName}, use ${newCodeRequest?.code} to reset your password. It expires in 24 hours. Your next allowed change will be in ${daysForReset} days.`
-            );
+            // const codeSent = await mail(
+            //     email,
+            //     'Password Reset',
+            //     `${user?.fullName}, use ${newCodeRequest?.code} to reset your password. It expires in 24 hours. Your next allowed change will be in ${daysForReset} days.`
+            // );
             res.status(200).json({
                 user: userToSend,
-                message: 'Code sent to email',
-                codeSent: !!codeSent // Replace with `!!codeSent` when mail is configured
+                message: 'Code not sent to email',
+                codeSent: false // Replace with `!!codeSent` when mail is configured
             });
         } catch (error) {
             console.error('Error finding associated user:', error);

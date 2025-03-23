@@ -44,7 +44,7 @@ const Login = () => {
   return (
     <div className='flex min-h-screen text-white'>
       {/* Left Image Section - Only visible on large screens */}
-      <div className='hidden lg:flex w-1/2 items-center justify-center p-8 bg-accent'>
+      <div className='hidden lg:flex w-1/2 items-center justify-center p-8 bg-primary-default'>
         <div className='relative flex flex-col items-center'>
           <img src={LoginGraphic} alt='Character' className='w-full h-full object-cover' />
         </div>
@@ -57,7 +57,7 @@ const Login = () => {
             <img
               src={Logo}
               alt='brand'
-              className='lg:h-20 lg:w-40 m-0 hover:scale-105 duration-500 delay-100 transition-all w-20 h-50 object-contain rounded-sm bg-white'
+              className='lg:h-20 lg:w-20 m-0 hover:scale-105 duration-500 delay-100 transition-all w-20 h-20 object-cover'
             />
             <h2 className='text-3xl font-bold mb-6 text-center lg:text-start'>Zenithearn</h2>
           </Link>

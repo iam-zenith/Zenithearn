@@ -41,7 +41,7 @@ const Registration = () => {
   return (
     <div className='flex min-h-screen text-white'>
       {/* Left Image Section - Only visible on large screens */}
-      <div className='hidden lg:flex w-1/2 items-center justify-center bg-white p-8'>
+      <div className='hidden lg:flex w-1/2 items-center justify-center bg-primary-default p-8'>
         <div className='relative flex flex-col items-center'>
           <img src={Logo} alt='brand' className='w-full h-full object-cover' />
         </div>
@@ -56,7 +56,7 @@ const Registration = () => {
             <img
               src={Logo}
               alt='brand'
-              className='lg:h-20 lg:w-40 m-0 hover:scale-105 duration-500 delay-100 transition-all w-20 h-50 object-contain bg-white rounded-sm'
+              className='m-0 hover:scale-105 duration-500 delay-100 transition-all w-20 h-20 object-cover'
             />
             <h2 className='text-2xl font-bold text-center lg:text-start hidden lg:block'>
               Welcome to Zenithearn

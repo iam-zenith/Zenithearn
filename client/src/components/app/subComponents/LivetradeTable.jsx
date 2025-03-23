@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { formatTime, formatToUTCString } from "../../../assets/helpers.js";
+import { formatTime, formatToNewYorkTime } from "../../../assets/helpers.js";
 import { MagnifyingGlassIcon, TrashIcon } from "@heroicons/react/24/solid";
 import FetchWithAuth from "../../auth/api.js";
 import { useNotification } from "../../layout/NotificationHelper";
@@ -169,9 +169,9 @@ const LiveTradeHistoryTable = () => {
                     {trade.profitLoss ? `$${parseFloat(trade.profitLoss).toLocaleString()}` : "N/A"}
                   </td>
                   <td className='p-4 capitalize'>{trade.status}</td>
-                  <td className='p-4 min-w-[12rem]'>{formatToUTCString(trade.createdAt)}</td>
+                  <td className='p-4 min-w-[12rem]'>{formatToNewYorkTime(trade.createdAt)}</td>
                   <td className='p-4 min-w-[12rem]'>
-                    {trade.closedAt ? formatToUTCString(trade.closedAt) : "N/A"}
+                    {trade.closedAt ? formatToNewYorkTime(trade.closedAt) : "N/A"}
                   </td>
                   <td className='p-4'>
                     {trade.duration ? formatTime(parseFloat(trade.duration)) : "N/A"}
