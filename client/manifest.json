@@ -3,9 +3,9 @@
     "short_name": "Zenithearn",
     "description": "A Smarter Approach to Trading & Investing",
     "start_url": "/",
-    "display": "browser",
-    "background_color": "##262626",
-    "theme_color": "##262626",
+    "display": "standalone",
+    "background_color": "#262626",
+    "theme_color": "#262626",
     "icons": [
         {
             "src": "/logo.png",
