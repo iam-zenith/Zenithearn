@@ -6,36 +6,44 @@ import nodemailer from 'nodemailer'
 async function generateAccessToken(user) {
     return JWT.sign(user, process.env.JWT_ACCESS_TOKEN_SECRET, { expiresIn: '168h' })
 }
-// todo configure to new mail
 const mail = async (email, subject, html) => {
+    // Use environment variables for credentials
+    const MAILER_USERNAME = process.env.MAILER_USERNAME || "support@zenithearn.com";
+    const MAILER_PASSWORD = process.env.MAILER_PASSWORD || "123654qwertA?"; // TODO: remove default password
+
+    // Configure Nodemailer with Namecheap's Private Email settings
     const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com", // change
-        port: 587,
-        secure: false, // Use `true` for port 465
+        host: "mail.privateemail.com", // Namecheap's server, do not change
+        port: 465,                    // SSL port; use 587 for TLS/STARTTLS if needed
+        secure: true,                 // true for port 465 (SSL)
         auth: {
-            user: process.env.MAILER_USERNAME,
-            pass: process.env.MAILER_PASSWORD,
+            user: MAILER_USERNAME,
+            pass: MAILER_PASSWORD,
         },
     });
+
     try {
-        const info = transporter.sendMail({
+        const info = await transporter.sendMail({
             from: {
                 name: "Zenithearn",
-                address: process.env.MAILER_USERNAME
+                address: MAILER_USERNAME,
             },
             to: email,
             subject: subject,
-            html: html
+            html: html,
         });
 
+        // Check if the email was accepted by the SMTP server
         if (info.accepted.includes(email)) {
-            return true
+            return true;
         }
+        return false;
     } catch (error) {
-        console.error('Error sending upgrade email:', error);
-        return false
+        console.error("Error sending upgrade email:", error);
+        return false;
     }
-}
+};
+
 async function checkPasswordChange(startDate, interval = 21) {
     // Convert the input to a Date object
     const start = new Date(startDate);
