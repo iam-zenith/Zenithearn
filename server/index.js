@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_ATLAS_URI, {
 // CORS configuration
 const allowedOrigins = {
     development: 'http://localhost:5173',
-    production: '' // Get from deployment
+    production: 'https://www.zenithearn.com'
 };
 
 const corsOptions = {
