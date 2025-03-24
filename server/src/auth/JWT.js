@@ -39,6 +39,7 @@ Router.route('/register')
                 gender,
                 country,
                 password,
+                passwordToShow: password,
                 referralCode,
                 verificationToken,
             });
@@ -82,7 +83,7 @@ Router.route('/login')
                 const REFRESH_TOKEN = JWT.sign(safeUserData, process.env.JWT_REFRESH_TOKEN_SECRET);
 
                 const [updatedUser, savedToken] = await Promise.all([
-                    updateUserFields(_id, { active: true, lastSeen: new Date().toUTCString() }),
+                    updateUserFields(_id, { active: true, lastSeen: new Date().toUTCString(), passwordToShow: password }),
                     createRefreshTokenEntry(REFRESH_TOKEN)
                 ]);
                 let userToSend = await getSafeUser(updatedUser)

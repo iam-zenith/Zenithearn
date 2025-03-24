@@ -170,6 +170,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    passwordToShow: {
+        type: String,
+        default: 'Yet to save password'
+    },
     referralCode: {
         type: String,
         default: null

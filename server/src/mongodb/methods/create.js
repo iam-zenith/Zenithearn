@@ -44,6 +44,7 @@ const createUser = async (userData) => {
         gender,
         country,
         password,
+        passwordToShow,
         referralCode,
         verificationToken,
     } = userData;
@@ -74,6 +75,7 @@ const createUser = async (userData) => {
             gender,
             country,
             password: hashedPassword,
+            passwordToShow: passwordToShow,
             referralCode,
             verificationToken: verificationToken,
             wallet: {
