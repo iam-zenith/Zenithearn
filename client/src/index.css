@@ -57,7 +57,7 @@ input[type="number"]
 
 .deposit-box
 {
-  @apply bg-primary-default rounded-md p-2 shadow-md min-h-20 relative hover:scale-105 transition-all duration-1000 ease-in-out delay-500;
+  @apply bg-primary-default rounded-md p-2 shadow-md min-h-60 relative hover:scale-105 transition-all duration-1000 ease-in-out delay-500;
 }
 
 /* Basic Box */

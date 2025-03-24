@@ -131,6 +131,9 @@ const Earning = () => {
   useEffect(() => {
     fetchCurrentPlan();
   }, []);
+  const formattedDate = formatToNewYorkTime(currentPlan?.expiryDate);
+  const displayDate = formattedDate.startsWith("Error:") ? "Unavailable" : formattedDate;
+
   return (
     <Card className='dashboard-box flex flex-col !pb-0' variant='gradient' color='gray'>
       {loading ? (
@@ -155,7 +158,7 @@ const Earning = () => {
           <div className='flex flex-row justify-between'>
             <p className='text-sm text-primary-light capitalize'>Current plan</p>
             <p className='text-sm text-primary-light' title='Expires'>
-              {formatToNewYorkTime(currentPlan?.expiryDate) || "Unavailable"}
+              {displayDate}
             </p>
           </div>
         </div>
