@@ -95,7 +95,7 @@ const EarnedProfits = () => {
       <div className='px-4 flex flex-col'>
         <h2 className='font-semibold text-2xl lg:text-3xl flex flex-col'>
           <span className='h-4 w-4 mb-4'>{liveTradeIcon}</span>
-          {`$${parseFloat(user?.wallet?.profits).toLocaleString()}`}
+          {`$${parseFloat(user?.wallet?.profits || "0.00").toLocaleString()}`}
         </h2>
         <p className='text-sm text-primary-light'> Earned Profits</p>
       </div>

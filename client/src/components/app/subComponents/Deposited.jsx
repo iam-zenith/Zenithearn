@@ -106,7 +106,7 @@ const Deposited = () => {
       <div className='flex flex-col'>
         <h2 className='font-semibold text-2xl lg:text-3xl flex flex-col'>
           <BanknotesIcon className='h-7 w-7 text-success-light' />
-          {`$${parseFloat(user?.wallet?.totalDeposit).toLocaleString()}`}
+          {`$${parseFloat(user?.wallet?.totalDeposit || "0.00").toLocaleString()}`}
         </h2>
         <p className='text-sm text-primary-light'>Amount Deposited</p>
       </div>

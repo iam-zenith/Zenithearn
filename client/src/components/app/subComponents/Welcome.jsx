@@ -28,7 +28,7 @@ const Welcome = () => {
         <h1 className='font-semibold text-xl'>{user?.fullName || "Customer"}</h1>
         <p className='text-sm text-primary-light capitalize'>Account Balance</p>
         <p className='font-semibold text-3xl lg:text-4xl py-4 text-white'>
-          ${parseFloat(user?.wallet?.balance).toLocaleString() || 0}
+          ${parseFloat(user?.wallet?.balance || "0.00").toLocaleString() || 0}
         </p>
         <button className='accent-btn w-3/4 mt-5 lg:mt-20' onClick={() => navigate("/app/deposit")}>
           deposit funds

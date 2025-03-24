@@ -152,7 +152,7 @@ const LastWithdrawal = () => {
               />
             )}
           </div>
-          ${parseFloat(withdrawal?.amount).toLocaleString() || "0.00"}
+          ${parseFloat(withdrawal?.amount || "0.00").toLocaleString()}
         </h2>
         <p className='text-sm text-primary-light'>Last Withdrawal</p>
       </div>

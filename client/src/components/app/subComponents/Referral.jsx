@@ -41,7 +41,7 @@ const Referral = () => {
           )}
         </div>
 
-        {`$${parseFloat(user?.wallet?.referral).toLocaleString()}`}
+        {`$${parseFloat(user?.wallet?.referral || "0.00").toLocaleString()}`}
       </h2>
       <p className='text-sm text-primary-light'>Referral Earning</p>
     </Card>
