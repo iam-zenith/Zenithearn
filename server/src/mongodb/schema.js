@@ -499,6 +499,10 @@ const livetradeSchema = new Schema({
         type: Date,
         default: null,
     },
+    time: {
+        type: Number,
+        default: 1,
+    },
     duration: {
         type: Number,
         default: function () {

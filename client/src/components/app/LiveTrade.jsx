@@ -31,6 +31,7 @@ const LiveTrade = () => {
       stopLoss: "",
       takeProfit: "",
       action: "",
+      time: 24,
     },
   });
 
@@ -107,6 +108,23 @@ const LiveTrade = () => {
         "DELL",
       ],
     },
+  ];
+  const tradeTimeOptions = [
+    { text: "Less than One hour", equiv: 0.5 },
+    { text: "1 hour", equiv: 1 },
+    { text: "2 hours", equiv: 2 },
+    { text: "3 hours", equiv: 3 },
+    { text: "6 hours", equiv: 6 },
+    { text: "9 hours", equiv: 9 },
+    { text: "12 hours", equiv: 12 },
+    { text: "18 hours", equiv: 18 },
+    { text: "1 day", equiv: 24 },
+    { text: "2 days", equiv: 48 },
+    { text: "3 days", equiv: 72 },
+    { text: "1 week", equiv: 168 },
+    { text: "2 weeks", equiv: 336 },
+    { text: "3 weeks", equiv: 504 },
+    { text: "1 month", equiv: 720 }, // approximating 30 days as a month
   ];
 
   const handleTradeSubmission = async (data) => {
@@ -218,7 +236,26 @@ const LiveTrade = () => {
               </select>
               {errors.currencyPair && <FormError err={errors.currencyPair.message} />}
             </div>
-
+            {/* Trade duration */}
+            <div>
+              <label htmlFor='time' className='block text-sm font-semibold'>
+                Timing (Hours)
+              </label>
+              <select
+                id='time'
+                className='form-input w-full'
+                {...register("time", { required: "Trade timing is required" })}>
+                <option value='' disabled>
+                  Select trade timing
+                </option>
+                {tradeTimeOptions.map((opt) => (
+                  <option key={opt.text} value={opt.equiv}>
+                    {opt.text}
+                  </option>
+                ))}
+              </select>
+              {errors.time && <FormError err={errors.time.message} />}
+            </div>
             {/* Lot Size */}
             <div>
               <label htmlFor='lotSize' className='block text-sm font-semibold'>

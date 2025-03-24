@@ -229,6 +229,7 @@ const createLiveTrade = async ({ details, userId, email }) => {
         stopLoss: details.stopLoss,
         takeProfit: details.takeProfit,
         action: details.action,
+        time: details.time,
         user: {
             id: userId,
             email: email,

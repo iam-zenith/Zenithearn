@@ -137,6 +137,7 @@ const LiveTradeHistoryTable = () => {
                 <th className='p-4'>Trade ID</th>
                 <th className='p-4'>Trade Type</th>
                 <th className='p-4'>Currency Pair</th>
+                <th className='p-4'>Timing (Hours)</th>
                 <th className='p-4'>Action</th>
                 <th className='p-4'>Lot Size</th>
                 <th className='p-4'>Entry Price</th>
@@ -156,6 +157,7 @@ const LiveTradeHistoryTable = () => {
                   <td className='p-4'>{trade._id}</td>
                   <td className='p-4 capitalize'>{trade.type}</td>
                   <td className='p-4'>{trade.currencyPair}</td>
+                  <td className='p-4'>{trade.time}</td>
                   <td className='p-4 capitalize'>{trade.action}</td>
                   <td className='p-4'>{trade.lotSize}</td>
                   <td className='p-4'>${parseFloat(trade.entryPrice).toLocaleString()}</td>

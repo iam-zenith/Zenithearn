@@ -288,6 +288,7 @@ Router.route('/livetrade')
             stopLoss,
             takeProfit,
             action,
+            time
         } = req.body;
         const { _id, email } = req.user;
 
@@ -296,7 +297,7 @@ Router.route('/livetrade')
         const parsedEntryPrice = parseFloat(entryPrice);
         const parsedStopLoss = parseFloat(stopLoss);
         const parsedTakeProfit = parseFloat(takeProfit);
-
+        const parsedTime = parseFloat(time)
         // Validation logic
         try {
             // 1. Validate required fields
@@ -340,6 +341,7 @@ Router.route('/livetrade')
                 stopLoss: parsedStopLoss,
                 takeProfit: parsedTakeProfit,
                 action,
+                time: parsedTime
             };
 
             // Create live trade with the validated data
