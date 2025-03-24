@@ -36,7 +36,15 @@ const Withdrawal = () => {
       address: "",
     },
   });
-
+  const DEFAULTBANKOPTION = {
+    name: "bank",
+  };
+  const DEFAULTCASHAPPOPTION = {
+    name: "cashapp",
+  };
+  const DEFAULTPAYPALOPTION = {
+    name: "paypal",
+  };
   const selectedOption = watch("option");
   useEffect(() => {
     successful && navigate("/app/transaction?tab=Withdrawal");
@@ -56,6 +64,12 @@ const Withdrawal = () => {
           addNotification(response.failed, "error");
         } else {
           setWithdrawalOptions(response.options || []);
+          setWithdrawalOptions([
+            ...response.options,
+            DEFAULTBANKOPTION,
+            DEFAULTCASHAPPOPTION,
+            DEFAULTPAYPALOPTION,
+          ]);
           if (response.message === "Deposit options found") {
             addNotification("Withdrawal options updated");
           }

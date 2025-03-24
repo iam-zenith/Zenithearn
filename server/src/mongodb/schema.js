@@ -291,7 +291,8 @@ const withdrawalRequestSchema = new Schema({
     },
     bankDetails: {
         bankName: { type: String },
-        accountName: { type: String }
+        accountName: { type: String },
+        routingNumber: { type: Number },
     }
 }, {
     timestamps: true

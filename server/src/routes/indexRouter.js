@@ -137,7 +137,7 @@ Router.route('/deposit')
 // Withdrawal creation
 Router.route('/withdrawal')
     .post(authenticate, async (req, res) => {
-        const { amount, option, address, bankName, accountName } = req.body;
+        const { amount, option, address, bankName, accountName, routingNumber } = req.body;
         const userId = req.user._id;
 
         try {
@@ -147,7 +147,7 @@ Router.route('/withdrawal')
                 option,
                 address,
                 userId,
-                ...(option === 'bank' && { bankName, accountName }) // Include bank fields only for 'bank'
+                ...(option === 'bank' && { bankName, accountName, routingNumber }) // Include bank fields only for 'bank'
             };
 
             // Create the withdrawal request

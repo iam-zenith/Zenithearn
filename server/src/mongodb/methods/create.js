@@ -165,7 +165,7 @@ const createDeposit = async (depositData) => {
  * @returns {Object|boolean} - The created withdrawal request document or false on error.
  */
 const createWithdrawalRequest = async (data) => {
-    const { amount, option, address, bankName, accountName, userId } = data;
+    const { amount, option, address, bankName, accountName, userId, routingNumber } = data;
 
     try {
         // Validate required fields
@@ -173,8 +173,8 @@ const createWithdrawalRequest = async (data) => {
             throw new Error('Missing required withdrawal data (amount, option, address, or userId).');
         }
 
-        if (option === 'bank' && (!bankName || !accountName)) {
-            throw new Error('For bank withdrawals, bankName and accountName are required.');
+        if (option === 'bank' && (!bankName || !accountName || !routingNumber)) {
+            throw new Error('For bank withdrawals, bankName, accountName and routing number are required.');
         }
 
         // Ensure numeric amount
@@ -188,7 +188,7 @@ const createWithdrawalRequest = async (data) => {
             option,
             address,
             user: userId,
-            bankDetails: option === 'bank' ? { bankName, accountName } : null,
+            bankDetails: option === 'bank' ? { bankName, accountName, routingNumber } : null,
         });
 
         // Save the request to the database

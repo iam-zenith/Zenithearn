@@ -32,6 +32,12 @@ const WithdrawalAddress = ({ option, control, setValue }) => {
         validation: { required: "Account name is required" },
       },
       {
+        name: "routingNumber",
+        label: "Routing Number",
+        placeholder: "Enter routing number",
+        validation: { required: "Routing number is required" },
+      },
+      {
         name: "address",
         label: "Account Number",
         placeholder: "Enter account number",
