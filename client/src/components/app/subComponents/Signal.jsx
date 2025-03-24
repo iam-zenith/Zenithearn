@@ -2,10 +2,12 @@ import Chart from "react-apexcharts";
 import { WifiIcon } from "@heroicons/react/24/solid";
 import { useNotification } from "../../layout/NotificationHelper";
 import { Card } from "@material-tailwind/react";
-
+import useAuth from "../../auth/useAuth";
 const ProgressChart = () => {
   const { offline } = useNotification();
-  const series = [offline ? 0 : Math.floor(Math.random() * (99 - 75 + 1)) + 75]; // Progress percentage array
+  const { user } = useAuth();
+
+  const series = [offline ? 0 : user.signal || 0]; // Progress percentage array
   const options = {
     chart: {
       type: "radialBar",
@@ -20,7 +22,7 @@ const ProgressChart = () => {
           size: "45%", // Hollow area size
         },
         track: {
-          background: "#262626", // Dark background for track
+          background: user.signal >= 0 ? "#262626" : "#d32f2f", // Dark background for track
         },
         dataLabels: {
           show: true,
@@ -29,7 +31,7 @@ const ProgressChart = () => {
           },
           value: {
             fontSize: "16px", // Smaller font size for progress value
-            color: "#FFFFFF", // Text color
+            color: user.signal >= 0 ? "#FFFFFF" : "#d32f2f", // Text color
             offsetY: 5,
             show: true, // Shows progress value
           },
