@@ -164,7 +164,7 @@ input[type="number"]
 
 .accent-btn
 {
-  @apply bg-accent text-white py-2 px-2 rounded-lg font-semibold transition-colors duration-500 ease-in-out uppercase hover:bg-yellow-800 disabled:opacity-50 disabled:cursor-none;
+  @apply bg-accent text-white py-2 px-2 rounded font-semibold transition-colors duration-500 ease-in-out uppercase hover:bg-yellow-800 disabled:opacity-50 disabled:cursor-none;
 }
 
 .accent-btn:focus

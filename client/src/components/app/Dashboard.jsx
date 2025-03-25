@@ -30,7 +30,7 @@ import BTCTicker from "./subComponents/Tradeview/BTCTicker";
 import ETHTicker from "./subComponents/Tradeview/ETHTicker";
 import Heatmap from "./subComponents/Tradeview/Heatmap";
 import AppNotification from "./subComponents/AppNotification";
-
+import TickerTape from "../app/subComponents/Tradeview/TickerTape";
 const Dashboard = () => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
@@ -42,6 +42,9 @@ const Dashboard = () => {
   return (
     <section className='pb-4'>
       <div className='flex flex-col w-full'>
+        <div className='absolute top-0 left-0 w-full'>
+          <TickerTape />
+        </div>
         <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4'>
           {loading ? <Loader /> : <Welcome />}
           {loading ? <Loader /> : <Signal />}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Collapse, Typography, IconButton } from "@material-tailwind/react";
-import { ArrowLeftEndOnRectangleIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link, useNavigate } from "react-router-dom";
 function NavList() {
   return (
     <ul className='my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6'>
@@ -31,6 +31,7 @@ function NavList() {
 
 export default function NavbarLanding() {
   const [openNav, setOpenNav] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleWindowResize = () => window.innerWidth >= 960 && setOpenNav(false);
 
@@ -57,9 +58,13 @@ export default function NavbarLanding() {
           <NavList />
         </div>
         <div className='flex flex-row'>
-          <Link to='./auth/login'>
-            <ArrowLeftEndOnRectangleIcon className='w-7 h-7 hover:text-accent' />
-          </Link>
+          {/* <Link to='./auth/login'> */}
+          <button
+            className='accent-btn !px-6 !py-3 transition hidden lg:flex'
+            onClick={() => navigate("/auth/login")}>
+            Sign in
+          </button>
+          {/* </Link> */}
           <IconButton
             variant='text'
             className='ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden hover:text-accent'

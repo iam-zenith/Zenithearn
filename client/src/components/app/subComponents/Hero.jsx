@@ -15,11 +15,18 @@ const Hero = () => {
           trading and investing effortless.
         </p>
 
-        <button
-          className='accent-btn !px-6 !py-3 transition'
-          onClick={() => navigate("/auth/register")}>
-          Create free account
-        </button>
+        <div className='flex flex-row justify-start gap-2 w-full'>
+          <button
+            className='accent-btn !px-6 !py-3 transition'
+            onClick={() => navigate("/auth/login")}>
+            Sign in
+          </button>
+          <button
+            className='primary-btn !px-6 !py-3 transition'
+            onClick={() => navigate("/auth/register")}>
+            Create free account
+          </button>
+        </div>
       </div>
 
       {/* Image Section */}
