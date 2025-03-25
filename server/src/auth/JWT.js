@@ -44,10 +44,9 @@ Router.route('/register')
                 verificationToken,
             });
 
-            const verificationLink = `${process.env.CLIENT_URL}/?token=${verificationToken}`;
-            console.log(verificationLink)
-            user && await mail(email, 'Verify Your Email', `Please verify your email using this link within the next 24 hours: ${verificationLink}`);
-            res.status(201).json({ message: 'Registration successful. Please verify your email' });
+            // const verificationLink = `${process.env.CLIENT_URL}/?token=${verificationToken}`;
+            // user && await mail(email, 'Verify Your Email', `Please verify your email using this link within the next 24 hours: ${verificationLink}`);
+            res.status(201).json({ message: 'Registration successful' });
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: 'An error occurred during registration' });
@@ -67,9 +66,9 @@ Router.route('/login')
             return res.status(404).json({ message: 'No user found' });
         }
 
-        if (!user.isVerified) {
-            return res.status(401).json({ message: 'Email not verified' });
-        }
+        // if (!user.isVerified) {
+        //     return res.status(401).json({ message: 'Email not verified' });
+        // }
         if (user.blocked) {
             return res.status(401).json({ message: 'User account is currently restricted, contact support to clarify' });
         }
