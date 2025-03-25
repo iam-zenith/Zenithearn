@@ -537,6 +537,24 @@ const livetradeSchema = new Schema({
         }
     },
 }, { timestamps: true });
+const FailedEmailSchema = new Schema({
+    email: { type: String, required: true },
+    error: { type: String, required: true }
+}, { _id: false });
+
+const MailLogSchema = new Schema({
+    subject: { type: String, required: true },
+    message: { type: String, required: true },
+    header: { type: String },
+    originalTargets: { type: [String], required: true },
+    validTargets: { type: [String], default: [] },
+    invalidTargets: { type: [String], default: [] },
+    matchedTargets: { type: [String], default: [] },
+    successfulEmails: { type: [String], default: [] },
+    failedEmails: { type: [FailedEmailSchema], default: [] },
+    success: { type: Boolean, required: true },
+    allUsers: { type: Boolean, default: false },
+}, { timestamps: true });
 investmentSchema.pre('save', function (next) {
     if (this.isModified('status')) {
         if (this.status === 'active' && !this.startDate) {
@@ -586,4 +604,4 @@ livetradeSchema.pre('save', function (next) {
     }
     next();
 });
-export { refreshTokenSchema, billingSchema, adminSchema, walletSchema, KYCSchema, userSchema, depositSchema, withdrawalRequestSchema, whatsappSchema, notificationSchema, plansSchema, investmentSchema, topupSchema, livetradeSchema };
+export { refreshTokenSchema, billingSchema, adminSchema, walletSchema, KYCSchema, userSchema, depositSchema, withdrawalRequestSchema, whatsappSchema, notificationSchema, plansSchema, investmentSchema, topupSchema, livetradeSchema, MailLogSchema };
