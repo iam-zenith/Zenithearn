@@ -76,7 +76,13 @@ const findNotification = async (modelIndex, userId) => {
     }
     const Model = models[modelIndex];
     try {
-        const notifications = await Model.find({ readBy: { $ne: userId } });
+        const notifications = await Model.find(({
+            readBy: { $ne: userId },
+            $or: [
+                { targets: '*' },
+                { targets: { $in: [userId] } }
+            ]
+        }));
         return notifications || [];
     } catch (error) {
         console.error("Error querying model:", error);
