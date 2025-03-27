@@ -284,7 +284,7 @@ const withdrawalRequestSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ['pending', 'completed', 'failed'],
+        enum: ['pending', 'completed', 'failed', 'processing'],
         default: 'pending',
         required: true
     },
