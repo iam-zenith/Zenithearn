@@ -48,7 +48,9 @@ const Dashboard = () => {
           {loading ? <Loader /> : <EarnedProfits />}
           {loading ? <Loader /> : <Deposited />}
           {loading ? <Loader /> : <LastWithdrawal />}
-          {loading ? <Loader /> : <AppNotification />}
+          <div className='md:col-span-2 lg:col-span-3'>
+            {loading ? <Loader /> : <AppNotification />}
+          </div>
           {loading ? <Loader /> : <Bonus />}
           {loading ? <Loader /> : <Referral />}
           <div className='lg:hidden my-2'>
