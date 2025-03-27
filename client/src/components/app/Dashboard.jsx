@@ -41,16 +41,14 @@ const Dashboard = () => {
   return (
     <section className='pb-4'>
       <div className='flex flex-col w-full'>
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4'>
+        {loading ? <Loader /> : <AppNotification />}
+        <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 items-stretch'>
           {loading ? <Loader /> : <Welcome />}
           {loading ? <Loader /> : <Signal />}
           {loading ? <Loader /> : <Earning />}
           {loading ? <Loader /> : <EarnedProfits />}
           {loading ? <Loader /> : <Deposited />}
           {loading ? <Loader /> : <LastWithdrawal />}
-          <div className='md:col-span-2 lg:col-span-3'>
-            {loading ? <Loader /> : <AppNotification />}
-          </div>
           {loading ? <Loader /> : <Bonus />}
           {loading ? <Loader /> : <Referral />}
           <div className='lg:hidden my-2'>
