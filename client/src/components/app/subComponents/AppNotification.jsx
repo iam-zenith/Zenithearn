@@ -79,13 +79,16 @@ const AppNotification = () => {
   };
 
   return notifications.length > 0 ? (
-    <Badge content={notifications?.length} className={`${classes[notifications[0].type]} border-2`}>
+    <Badge
+      content={notifications?.length}
+      className={`${classes[notifications[0].type]} border-2`}
+      placement='top-start'>
       <Carousel
         transition={{ duration: 1 }}
         autoplay={true}
         autoplayDelay={50000}
         loop={true}
-        className='w-full rounded-lg my-2'
+        className='w-full rounded-lg mb-4 mt-2'
         navigation={({ setActiveIndex, activeIndex, length }) => (
           <div className='absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2'>
             {new Array(length).fill("").map((_, i) => (
