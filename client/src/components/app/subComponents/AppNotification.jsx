@@ -131,7 +131,7 @@ const AppNotification = () => {
     <Alert
       icon={notificationIcon}
       open={true}
-      className={`rounded-md border-0 ${classes["*"]} font-medium md:min-h-[5rem] sm:min-h-[8rem]`}>
+      className={`border-0 ${classes["*"]} font-medium md:min-h-[5rem] sm:min-h-[8rem] rounded-lg mb-4 mt-2`}>
       No notifications available right now
     </Alert>
   );
