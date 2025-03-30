@@ -544,7 +544,7 @@ const FailedEmailSchema = new Schema({
 
 const MailLogSchema = new Schema({
     subject: { type: String, required: true },
-    message: { type: String, required: true },
+    message: { type: [String], default: [] },
     header: { type: String },
     originalTargets: { type: [String], required: true },
     validTargets: { type: [String], default: [] },
