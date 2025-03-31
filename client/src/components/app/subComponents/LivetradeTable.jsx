@@ -166,7 +166,14 @@ const LiveTradeHistoryTable = () => {
                   <td className='p-4'>
                     {trade.exitPrice ? `$${parseFloat(trade.exitPrice).toLocaleString()}` : "N/A"}
                   </td>
-                  <td className='p-4'>
+                  <td
+                    className={`p-4 ${
+                      trade.profitLoss > 0
+                        ? "text-success-dark"
+                        : trade.profitLoss < 0
+                        ? "text-error-dark"
+                        : ""
+                    }`}>
                     {" "}
                     {trade.profitLoss ? `$${parseFloat(trade.profitLoss).toLocaleString()}` : "N/A"}
                   </td>
