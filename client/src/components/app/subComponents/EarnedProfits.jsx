@@ -90,21 +90,25 @@ const AreaChart = () => {
  */
 const EarnedProfits = () => {
   const { user } = useAuth();
+  const profit = parseFloat(user?.wallet?.profits || "0.00");
+  const formattedProfit =
+    profit < 0 ? `-$${Math.abs(profit).toLocaleString()}` : `$${profit.toLocaleString()}`;
+
   return (
     <div className='dashboard-box flex flex-col !px-0 !pb-0'>
       <div className='px-4 flex flex-col'>
         <h2 className='font-semibold text-2xl lg:text-3xl flex flex-col'>
+          <span className='h-4 w-4 mb-4'>{liveTradeIcon}</span>
           <span
-            className={`p-4 h-4 w-4 mb-4 ${
+            className={`${
               user?.wallet?.profits > 0
                 ? "text-success-dark"
                 : user?.wallet?.profits < 0
                 ? "text-error-dark"
                 : ""
             }`}>
-            {liveTradeIcon}
+            {formattedProfit}
           </span>
-          {`$${parseFloat(user?.wallet?.profits || "0.00").toLocaleString()}`}
         </h2>
         <p className='text-sm text-primary-light'> Earned Profits</p>
       </div>

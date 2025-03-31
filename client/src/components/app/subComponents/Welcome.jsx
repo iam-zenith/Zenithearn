@@ -21,15 +21,17 @@ import { Card } from "@material-tailwind/react";
 const Welcome = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const profit = parseFloat(user?.wallet?.balance || "0.00");
+  const formattedBalance =
+    profit < 0 ? `-$${Math.abs(profit).toLocaleString()}` : `$${profit.toLocaleString()}`;
+
   return (
     <Card className='dashboard-box flex flex-row relative !p-0' variant='gradient' color='gray'>
       <div className='w-2/3 p-4'>
         <UserIcon className='h-7 w-7' />
         <h1 className='font-semibold text-xl'>{user?.fullName || "Customer"}</h1>
         <p className='text-sm text-primary-light capitalize'>Account Balance</p>
-        <p className='font-semibold text-3xl lg:text-4xl py-4 text-white'>
-          ${parseFloat(user?.wallet?.balance || "0.00").toLocaleString() || 0}
-        </p>
+        <p className='font-semibold text-3xl lg:text-4xl py-4 text-white'>{formattedBalance}</p>
         <button className='accent-btn w-3/4 mt-5 lg:mt-20' onClick={() => navigate("/app/deposit")}>
           deposit funds
         </button>
