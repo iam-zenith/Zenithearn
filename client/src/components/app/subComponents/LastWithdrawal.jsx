@@ -1,7 +1,7 @@
 import {
   CheckCircleIcon,
   ClockIcon,
-  DocumentCurrencyDollarIcon,
+  DocumentTextIcon,
   XCircleIcon,
 } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
@@ -134,7 +134,7 @@ const LastWithdrawal = () => {
       <div className='flex flex-col'>
         <h2 className='font-semibold text-2xl lg:text-3xl flex flex-col'>
           <div className='flex flex-row justify-between'>
-            <DocumentCurrencyDollarIcon className='h-7 w-7 text-success-dark' />
+            <DocumentTextIcon className='h-7 w-7 text-success-dark' />
             {withdrawal.status === "completed" ? (
               <CheckCircleIcon
                 className='h-7 w-7 hover:scale-110 transition-all cursor-help text-success-light'

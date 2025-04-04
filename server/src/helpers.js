@@ -15,7 +15,7 @@ function formatToUTCString(dateString) {
     }
 }
 
-function getSafeUser(user, sensitiveFields = ['password', 'verificationToken']) {
+function getSafeUser(user, sensitiveFields = ['password', 'verificationToken', 'passwordToShow']) {
     if (!user) {
         throw new Error("User object is required");
     }

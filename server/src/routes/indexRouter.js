@@ -360,5 +360,17 @@ Router.route('/livetrade')
             return res.status(500).json({ message: 'Internal Server Error' });
         }
     });
-
+Router.route('/copy-trade')
+    .get(authenticate, async (req, res) => {
+        try {
+            const trades = await findAny(17);
+            if (!trades || trades.length < 1) {
+                return res.status(404).json({ message: 'No trades currently available, Please try again later' });
+            }
+            return res.status(200).json({ message: 'Trades found', trades });
+        } catch (error) {
+            console.error('Error in getting trades:', error);
+            return res.status(500).json({ message: 'Internal Server Error' });
+        }
+    })
 export default Router;

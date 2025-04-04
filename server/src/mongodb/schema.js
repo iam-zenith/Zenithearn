@@ -462,6 +462,66 @@ const topupSchema = new Schema({
         enum: ['balance', 'totalDeposit', 'totalBonus', 'profits', 'withdrawn', 'referral']
     }
 }, { timestamps: true });
+const traderSchema = new Schema({
+    name: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+    }, imageFilename: {
+        type: String, default: null
+    }
+}, { timestamps: true })
+const copytradeSchema = new Schema({
+    type: {
+        type: String,
+        enum: ['cryptocurrency', 'forex', 'stock'],
+        lowercase: true,
+        required: true,
+    },
+    currencyPair: {
+        type: String,
+        required: true,
+    },
+    lotSize: {
+        type: Number,
+        required: true,
+    },
+    entryPrice: {
+        type: Number,
+        required: true,
+    },
+    stopLoss: {
+        type: Number,
+        required: true,
+    },
+    takeProfit: {
+        type: Number,
+        required: true,
+    },
+    time: {
+        type: Number,
+        default: 1,
+    },
+    action: {
+        type: String,
+        lowercase: true,
+        enum: ['buy', 'sell'],
+        required: true,
+    },
+    trader: {
+        _id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Trader',
+            required: true,
+        }, name: {
+            type: String,
+            required: true,
+            trim: true,
+        }
+    }
+
+}, { timestamps: true });
 const livetradeSchema = new Schema({
     type: {
         type: String,
@@ -604,4 +664,4 @@ livetradeSchema.pre('save', function (next) {
     }
     next();
 });
-export { refreshTokenSchema, billingSchema, adminSchema, walletSchema, KYCSchema, userSchema, depositSchema, withdrawalRequestSchema, whatsappSchema, notificationSchema, plansSchema, investmentSchema, topupSchema, livetradeSchema, MailLogSchema };
+export { refreshTokenSchema, billingSchema, adminSchema, walletSchema, KYCSchema, userSchema, depositSchema, withdrawalRequestSchema, whatsappSchema, notificationSchema, plansSchema, investmentSchema, topupSchema, livetradeSchema, MailLogSchema, copytradeSchema, traderSchema };

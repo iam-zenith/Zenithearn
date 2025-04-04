@@ -9,6 +9,7 @@ import {
   plansIcon,
   securityIcon,
   supportIcon,
+  traderIcon,
   transactionIcon,
 } from "../../assets/icons";
 import {
@@ -197,6 +198,12 @@ function SidebarContent() {
             <span className='h-5 w-5 scale-125'>{liveTradeIcon}</span>
           </ListItemPrefix>
           Live Trade
+        </ListItem>
+        <ListItem onClick={() => navigate("./copy-trading")}>
+          <ListItemPrefix>
+            <span className='h-5 w-5 scale-125'>{traderIcon}</span>
+          </ListItemPrefix>
+          Copy Trading
         </ListItem>
         <ListItem onClick={() => navigate("./kyc")}>
           <ListItemPrefix>
