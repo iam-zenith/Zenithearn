@@ -466,9 +466,9 @@ const traderSchema = new Schema({
     name: {
         type: String,
         required: true,
-        unique: true,
         trim: true,
-    }, imageFilename: {
+    },
+    imageFilename: {
         type: String, default: null
     }
 }, { timestamps: true })
@@ -509,17 +509,7 @@ const copytradeSchema = new Schema({
         enum: ['buy', 'sell'],
         required: true,
     },
-    trader: {
-        _id: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Trader',
-            required: true,
-        }, name: {
-            type: String,
-            required: true,
-            trim: true,
-        }
-    }
+    trader: traderSchema
 
 }, { timestamps: true });
 const livetradeSchema = new Schema({

@@ -10,14 +10,15 @@ import { findOneFilter } from '../mongodb/methods/read.js';
 const Router = _Router();
 
 // Set up GridFS Buckets
-let gfsProfilePics, gfsDeposits, gfsKYC;
+let gfsProfilePics, gfsDeposits, gfsKYC, gfsTraderImg;
 //** Always sync with admin */
 let gfsBilling;
 mongoose.connection.once('open', () => {
     gfsProfilePics = new mongoose.mongo.GridFSBucket(mongoose.connection.db, { bucketName: 'profile_pics' });
     gfsDeposits = new mongoose.mongo.GridFSBucket(mongoose.connection.db, { bucketName: 'deposits' });
     gfsKYC = new mongoose.mongo.GridFSBucket(mongoose.connection.db, { bucketName: 'kyc' });
-    gfsBilling = new mongoose.mongo.GridFSBucket(mongoose.connection.db, { bucketName: 'billingOptions' })
+    gfsBilling = new mongoose.mongo.GridFSBucket(mongoose.connection.db, { bucketName: 'billingOptions' });
+    gfsTraderImg = new mongoose.mongo.GridFSBucket(mongoose.connection.db, { bucketName: 'traderImg' });
 })
 
 // Configure Multer for file uploads (store temporarily in memory)
@@ -216,13 +217,37 @@ Router.route('/upload/kyc/:userId/:kycId')
             }
         }
     });
+// view trader img
+Router.route('/image/trader/:id')
+    .get((req, res) => {
+        const fileId = req.params.id;
+        // MongoDB ObjectId regex pattern
+        const objectIdRegex = /^[a-fA-F0-9]{24}$/;
 
+        // Validate fileId against the regex
+        if (!objectIdRegex.test(fileId)) {
+            return res.status(400).json({ message: 'Invalid fileId format' });
+        }
+        const downloadStream = gfsTraderImg.openDownloadStream(new mongoose.Types.ObjectId(fileId));
+
+        downloadStream.on('error', (err) => {
+            console.error('Error retrieving trader  img:', err);
+            res.status(404).json({ message: 'File not found' });
+        });
+
+        downloadStream.on('file', (file) => {
+            res.setHeader('Content-Type', file.contentType || 'application/octet-stream'); // Adjust MIME type as needed
+        });
+
+        downloadStream.pipe(res);
+    });
 // Export your configured constants if needed
 export {
     gfsProfilePics,
     gfsDeposits,
     gfsKYC,
     gfsBilling,
+    gfsTraderImg,
     uploadProfilePics,
     uploadDeposits,
     uploadKYC,

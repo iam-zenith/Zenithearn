@@ -1,21 +1,14 @@
 import PropTypes from "prop-types";
 import { useNotification } from "../../layout/NotificationHelper";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Avatar,
-} from "@material-tailwind/react";
+import { Card, CardHeader, CardBody, CardFooter, Typography } from "@material-tailwind/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import FetchWithAuth from "../../auth/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../auth/useAuth";
+import TraderImg from "./TraderImg";
 
 const CopyTradeCard = ({
-  avatar,
   trader,
   entryPrice,
   type,
@@ -30,9 +23,9 @@ const CopyTradeCard = ({
   const [isSubmitting, setisSubmitting] = useState(false);
   const { addNotification } = useNotification();
   const navigate = useNavigate();
+  console.log(trader);
   const handleTradeSubmission = async () => {
     setisSubmitting(true);
-
     // Check if entryPrice exceeds user balance
     if (entryPrice > user?.wallet?.balance) {
       addNotification(
@@ -63,7 +56,6 @@ const CopyTradeCard = ({
         },
         "Failed to create live trade"
       );
-
       if (response.failed) {
         addNotification(response.message, "error");
       } else {
@@ -88,7 +80,7 @@ const CopyTradeCard = ({
         className='relative m-0 mb-8 rounded-none border-b border-white/10 pb-8 text-center'>
         {/* Positioned avatar */}
         <div className='flex flex-col items-center space-x-2'>
-          <Avatar src={avatar || "/Zenith.png"} alt='Trader Profile' size='lg' />
+          <TraderImg imageId={trader?.imageFilename} />
           <Typography variant='h5' className='font-bold text-text-light'>
             {trader.name}
           </Typography>
