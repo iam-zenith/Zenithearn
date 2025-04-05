@@ -29,7 +29,7 @@ const TraderImg = forwardRef(({ imageId }) => {
     <img
       src={image || PlaceholderProfile}
       alt='TraderImg'
-      className={`w-20 h-20  object-cover rounded-full`}
+      className={`w-12 h-12 lg:w-20 lg:h-20  object-cover rounded-full`}
     />
   );
 });

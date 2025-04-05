@@ -88,12 +88,12 @@ const CopyTradeCard = ({
         <Typography
           variant='h1'
           color='white'
-          className='mt-6 flex justify-center gap-1 text-7xl font-normal'>
+          className='mt-6 flex justify-center text-4xl font-normal'>
           ${entryPrice}
         </Typography>
       </CardHeader>
       <CardBody className='p-0'>
-        <ul className='flex flex-col gap-4'>
+        <ul className='flex flex-col gap-2'>
           {[
             { label: "Type", value: type },
             { label: "Currency Pair", value: currencyPair },
