@@ -55,7 +55,7 @@ const findOneFilter = async (filter = {}, modelIndex = 0) => {
     }
     const Model = models[modelIndex];
     try {
-        const found = await Model.findOne(filter);
+        const found = await Model.findOne(filter).sort({ createdAt: -1 });
         return found;
     } catch (error) {
         console.error("Error querying model:", error);
