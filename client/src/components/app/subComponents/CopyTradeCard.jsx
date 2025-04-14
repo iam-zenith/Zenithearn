@@ -12,7 +12,6 @@ const CopyTradeCard = ({
   trader,
   entryPrice,
   type,
-  lotSize,
   currencyPair,
   stopLoss,
   takeProfit,
@@ -46,7 +45,6 @@ const CopyTradeCard = ({
           body: JSON.stringify({
             type,
             currencyPair,
-            lotSize,
             entryPrice,
             stopLoss,
             takeProfit,
@@ -131,7 +129,6 @@ CopyTradeCard.propTypes = {
   takeProfit: PropTypes.number.isRequired,
   time: PropTypes.number.isRequired,
   action: PropTypes.string.isRequired,
-  lotSize: PropTypes.number.isRequired,
 };
 
 export default CopyTradeCard;

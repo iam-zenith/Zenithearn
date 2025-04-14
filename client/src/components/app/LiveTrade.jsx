@@ -26,7 +26,6 @@ const LiveTrade = () => {
     defaultValues: {
       type: "",
       currencyPair: "",
-      lotSize: "",
       entryPrice: "",
       stopLoss: "",
       takeProfit: "",
@@ -255,22 +254,6 @@ const LiveTrade = () => {
                 ))}
               </select>
               {errors.time && <FormError err={errors.time.message} />}
-            </div>
-            {/* Lot Size */}
-            <div>
-              <label htmlFor='lotSize' className='block text-sm font-semibold'>
-                Lot Size
-              </label>
-              <input
-                type='number'
-                className='form-input w-full'
-                placeholder='Enter lot size'
-                {...register("lotSize", {
-                  required: "Lot size is required",
-                  min: { value: 0.01, message: "Lot size must be at least 0.01" },
-                })}
-              />
-              {errors.lotSize && <FormError err={errors.lotSize.message} />}
             </div>
 
             {/* Entry Price */}

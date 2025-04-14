@@ -159,7 +159,6 @@ const LiveTradeHistoryTable = () => {
                   <td className='p-4'>{trade.currencyPair}</td>
                   <td className='p-4'>{trade.time}</td>
                   <td className='p-4 capitalize'>{trade.action}</td>
-                  <td className='p-4'>{trade.lotSize}</td>
                   <td className='p-4'>${parseFloat(trade.entryPrice).toLocaleString()}</td>
                   <td className='p-4'>${parseFloat(trade.stopLoss).toLocaleString()}</td>
                   <td className='p-4'>${parseFloat(trade.takeProfit).toLocaleString()}</td>

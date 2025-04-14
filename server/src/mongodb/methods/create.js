@@ -226,7 +226,6 @@ const createLiveTrade = async ({ details, userId, email }) => {
     const liveTrade = new LiveTrade({
         type: details.type,
         currencyPair: details.currencyPair,
-        lotSize: details.lotSize,
         entryPrice: details.entryPrice,
         stopLoss: details.stopLoss,
         takeProfit: details.takeProfit,

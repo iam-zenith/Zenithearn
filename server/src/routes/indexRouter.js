@@ -283,7 +283,6 @@ Router.route('/livetrade')
         const {
             type,
             currencyPair,
-            lotSize,
             entryPrice,
             stopLoss,
             takeProfit,
@@ -293,7 +292,6 @@ Router.route('/livetrade')
         const { _id, email } = req.user;
 
         // Parse numerical values to ensure they are treated as numbers
-        const parsedLotSize = parseFloat(lotSize);
         const parsedEntryPrice = parseFloat(entryPrice);
         const parsedStopLoss = parseFloat(stopLoss);
         const parsedTakeProfit = parseFloat(takeProfit);
@@ -301,7 +299,7 @@ Router.route('/livetrade')
         // Validation logic
         try {
             // 1. Validate required fields
-            if (!type || !currencyPair || isNaN(parsedLotSize) || isNaN(parsedEntryPrice) || isNaN(parsedStopLoss) || isNaN(parsedTakeProfit) || !action) {
+            if (!type || !currencyPair || isNaN(parsedEntryPrice) || isNaN(parsedStopLoss) || isNaN(parsedTakeProfit) || !action) {
                 return res.status(400).json({ message: 'All fields are required and must be valid' });
             }
 
@@ -336,7 +334,6 @@ Router.route('/livetrade')
             const details = {
                 type,
                 currencyPair,
-                lotSize: parsedLotSize,
                 entryPrice: parsedEntryPrice,
                 stopLoss: parsedStopLoss,
                 takeProfit: parsedTakeProfit,

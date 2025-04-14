@@ -483,10 +483,6 @@ const copytradeSchema = new Schema({
         type: String,
         required: true,
     },
-    lotSize: {
-        type: Number,
-        required: true,
-    },
     entryPrice: {
         type: Number,
         required: true,
@@ -521,10 +517,6 @@ const livetradeSchema = new Schema({
     },
     currencyPair: {
         type: String,
-        required: true,
-    },
-    lotSize: {
-        type: Number,
         required: true,
     },
     entryPrice: {
