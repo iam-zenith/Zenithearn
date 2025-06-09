@@ -1,13 +1,16 @@
-// TradingViewWidget.jsx
 import { useEffect, useRef, memo } from "react";
 import PropTypes from "prop-types";
 
 function AdvancedChart({ symbol = "BITSTAMP:BTCUSD" }) {
-  // This component renders an advanced TradingView chart widget.
-
   const container = useRef();
 
   useEffect(() => {
+    const chartContainer = container.current;
+    // Cleanup: clear out old chart
+    if (chartContainer) {
+      chartContainer.innerHTML = ""; // Clear any previous widget
+    }
+
     const script = document.createElement("script");
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
     script.type = "text/javascript";
@@ -83,7 +86,17 @@ function AdvancedChart({ symbol = "BITSTAMP:BTCUSD" }) {
       hotlist: true,
       support_host: "https://www.tradingview.com",
     });
-    container.current.appendChild(script);
+
+    if (chartContainer) {
+      chartContainer.appendChild(script);
+    }
+
+    // Optional: clean up when component unmounts
+    return () => {
+      if (chartContainer) {
+        chartContainer.innerHTML = "";
+      }
+    };
   }, [symbol]);
 
   return (
@@ -99,10 +112,9 @@ function AdvancedChart({ symbol = "BITSTAMP:BTCUSD" }) {
     </div>
   );
 }
-// Prop-Types validation for props
+
 AdvancedChart.propTypes = {
   symbol: PropTypes.string,
 };
+
 export default memo(AdvancedChart);
-// This component is a memoized version of the TradingViewWidget to prevent unnecessary re-renders.
-// It uses the `memo` function from React to optimize performance by only re-rendering when props change.
