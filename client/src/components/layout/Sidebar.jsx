@@ -4,11 +4,13 @@ import UtcTime from "../app/subComponents/Time";
 import useAuth from "../auth/useAuth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
+  chartIcon,
   clockIcon,
   liveTradeIcon,
   plansIcon,
   securityIcon,
   supportIcon,
+  tradeIcon,
   traderIcon,
   transactionIcon,
 } from "../../assets/icons";
@@ -186,6 +188,55 @@ function SidebarContent() {
             </List>
           </AccordionBody>
         </Accordion>
+        <Accordion
+          open={open === 3}
+          icon={
+            <ChevronDownIcon
+              strokeWidth={2.5}
+              className={`mx-auto h-4 w-4 transition-transform hover:text-text-dark ${
+                open === 2 ? "rotate-180" : "text-text-light"
+              }`}
+            />
+          }>
+          <ListItem className='p-0' selected={open === 3}>
+            <AccordionHeader
+              onClick={() => handleOpen(3)}
+              className='border-b-0 p-3 text-text-light'>
+              <ListItemPrefix>
+                <span className='h-5 w-5 scale-125'>{tradeIcon}</span>
+              </ListItemPrefix>
+              <Typography className='mr-auto font-normal'>Trading</Typography>
+            </AccordionHeader>
+          </ListItem>
+          <AccordionBody className='py-1'>
+            <List className='p-0 text-text-light'>
+              <ListItem onClick={() => navigate("./trade")}>
+                <ListItemPrefix>
+                  <span className='h-5 w-5 scale-125'>{chartIcon}</span>
+                </ListItemPrefix>
+                Trade
+              </ListItem>
+              <ListItem onClick={() => navigate("./live-trade")}>
+                <ListItemPrefix>
+                  <span className='h-5 w-5 scale-125'>{liveTradeIcon}</span>
+                </ListItemPrefix>
+                Live Trade
+              </ListItem>
+              <ListItem onClick={() => navigate("./copy-trading")}>
+                <ListItemPrefix>
+                  <span className='h-5 w-5 scale-125'>{traderIcon}</span>
+                </ListItemPrefix>
+                Copy Trading
+              </ListItem>
+              {/* <ListItem onClick={() => navigate("./transaction")}>
+                <ListItemPrefix>
+                  <ChevronRightIcon strokeWidth={3} className='h-3 w-5' />
+                </ListItemPrefix>
+                Transaction History
+              </ListItem> */}
+            </List>
+          </AccordionBody>
+        </Accordion>
         <hr className='my-2 border-primary-light' />
         <ListItem onClick={() => navigate("./plans")}>
           <ListItemPrefix>
@@ -193,7 +244,7 @@ function SidebarContent() {
           </ListItemPrefix>
           Plans
         </ListItem>
-        <ListItem onClick={() => navigate("./trade")}>
+        {/* <ListItem onClick={() => navigate("./trade")}>
           <ListItemPrefix>
             <span className='h-5 w-5 scale-125'>{liveTradeIcon}</span>
           </ListItemPrefix>
@@ -204,7 +255,7 @@ function SidebarContent() {
             <span className='h-5 w-5 scale-125'>{traderIcon}</span>
           </ListItemPrefix>
           Copy Trading
-        </ListItem>
+        </ListItem> */}
         <ListItem onClick={() => navigate("./kyc")}>
           <ListItemPrefix>
             <IdentificationIcon className='h-5 w-5' />

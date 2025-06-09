@@ -139,7 +139,6 @@ const LiveTradeHistoryTable = () => {
                 <th className='p-4'>Currency Pair</th>
                 <th className='p-4'>Timing (Hours)</th>
                 <th className='p-4'>Action</th>
-                <th className='p-4'>Lot Size</th>
                 <th className='p-4'>Entry Price</th>
                 <th className='p-4'>Stop Loss</th>
                 <th className='p-4'>Take Profit</th>

@@ -63,4 +63,96 @@ function formatTime(seconds) {
         return `${weeks} week${weeks === 1 ? '' : 's'}`;
     }
 }
-export { openEmailClient, getDateAfterDays, formatToNewYorkTime, formatTime }
+function getBestWatchlistMatch(pair) {
+    const watchlist = [
+        "COINBASE:BTCUSD",
+        "COINBASE:ETHUSD",
+        "COINBASE:SOLUSD",
+        "BITSTAMP:XRPUSD",
+        "BINANCE:DOGEUSDT",
+        "BINANCE:BTCUSDT",
+        "HTX:XRUSDT",
+        "BINANCE:SOLUSDT",
+        "BINANCE:ADAUSDT",
+        "BINANCE:LINKUSDT",
+        "BINANCE:SUIUSDT",
+        "BINANCE:ETHBTC",
+        "BINANCE:PEPEUSDT",
+        "BINANCE:AVAXUSDT",
+        "BINANCE:BNBUSDT",
+        "BINANCE:TRUMPUSDT",
+        "BINANCE:AAVEUSDT",
+        "BINANCE:DOTUSDT",
+        "BINANCE:SHIBUSDT",
+        "CMCMARKETS:EURUSD",
+        "FX:GBPUSD",
+        "FX:USDJPY",
+        "OANDA:AUDUSD",
+        "OANDA:USDCAD",
+        "OANDA:GBPJPY",
+        "OANDA:USDCHF",
+        "CMCMARKETS:EURJPY",
+        "OANDA:NZDUSD",
+        "OANDA:EURGBP",
+        "CMCMARKETS:AUDJPY",
+        "CMCMARKETS:EURAUD",
+        "CMCMARKETS:GBPAUD",
+        "OANDA:GBPCAD",
+        "FX:USDMXN",
+        "KRAKEN:SPXUSD",
+        "TVC:DJI",
+        "INDEX:NKY",
+        "TVC:DEU40",
+        "FTSE:UKX",
+        "NASDAQ:TSLA",
+        "NASDAQ:NVDA",
+        "NASDAQ:AAPL",
+        "NASDAQ:MSTR",
+        "NASDAQ:AMZN",
+        "NASDAQ:META",
+        "NASDAQ:AMD",
+        "NASDAQ:MSFT",
+        "NASDAQ:COIN",
+        "NASDAQ:GOOGL",
+        "NASDAQ:NFLX",
+        "NASDAQ:INTC",
+        "NASDAQ:AVGO",
+        "NSE:RELIANCE",
+        "NSE:TATAMOTORS",
+        "NYSE:DELL"
+    ];
+    // Normalize input for consistent comparison
+    const normalize = (str) => str.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
+
+    const normalizedPair = normalize(pair);
+
+    // Rank candidates based on similarity score
+    const scoredMatches = watchlist.map((entry) => {
+        const parts = entry.split(":");
+        const symbol = normalize(parts[1] || "");
+        let score = 0;
+
+        // Exact match
+        if (symbol === normalizedPair) score += 100;
+
+        // Partial match boost
+        if (symbol.includes(normalizedPair) || normalizedPair.includes(symbol)) score += 50;
+
+        // Prefix match (BTCUSD -> COINBASE:BTCUSD)
+        if (symbol.startsWith(normalizedPair)) score += 30;
+
+        // Shared asset (BTC in BTCUSDT / BTCUSD)
+        const baseAsset = normalizedPair.match(/[A-Z]+/g)?.[0] || "";
+        if (symbol.includes(baseAsset)) score += 10;
+
+        return { entry, score };
+    });
+
+    // Sort by best score
+    scoredMatches.sort((a, b) => b.score - a.score);
+
+    // Return highest scoring entry
+    return scoredMatches[0]?.entry || null;
+}
+
+export { openEmailClient, getDateAfterDays, formatToNewYorkTime, formatTime, getBestWatchlistMatch };
