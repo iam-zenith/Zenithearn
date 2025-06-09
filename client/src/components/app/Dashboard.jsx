@@ -25,11 +25,8 @@ import Earning from "./subComponents/EarningPlan";
 import Deposited from "./subComponents/Deposited";
 import Bonus from "./subComponents/Bonus";
 import LastWithdrawal from "./subComponents/LastWithdrawal";
-import Referral from "./subComponents/Referral";
-import BTCTicker from "./subComponents/Tradeview/BTCTicker";
-import ETHTicker from "./subComponents/Tradeview/ETHTicker";
-import Heatmap from "./subComponents/Tradeview/Heatmap";
 import AppNotification from "./subComponents/AppNotification";
+import Screener from "./subComponents/Tradeview/Screener";
 const Dashboard = () => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
@@ -40,7 +37,7 @@ const Dashboard = () => {
 
   return (
     <section className='pb-4'>
-      <div className='flex flex-col w-full'>
+      <div className='flex flex-col w-full h-fit'>
         {loading ? <Loader /> : <AppNotification />}
         <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 items-stretch'>
           {loading ? <Loader /> : <Welcome />}
@@ -50,13 +47,8 @@ const Dashboard = () => {
           {loading ? <Loader /> : <Deposited />}
           {loading ? <Loader /> : <LastWithdrawal />}
           {loading ? <Loader /> : <Bonus />}
-          {loading ? <Loader /> : <Referral />}
-          <div className='lg:hidden my-2'>
-            <BTCTicker />
-            <ETHTicker />
-          </div>
         </div>
-        <Heatmap />
+        <Screener />
       </div>
     </section>
   );
