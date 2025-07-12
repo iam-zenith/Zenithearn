@@ -58,7 +58,7 @@ const TransactionForm = () => {
                 className={`flex items-center justify-center w-full py-2 text-sm cursor-pointer transition-all ease-in-out duration-500 delay-100 rounded-md font-semibold ${
                   activeTab === tab.name
                     ? "bg-primary-dark text-text-light font-bold"
-                    : "hover:scale-105 text-primary-light"
+                    : "hover:scale-105 text-text-light"
                 }`}
                 onClick={() => setActiveTab(tab.name)}>
                 {tab.icon}

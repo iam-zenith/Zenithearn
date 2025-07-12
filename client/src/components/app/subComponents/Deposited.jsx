@@ -1,8 +1,64 @@
 import { BanknotesIcon } from "@heroicons/react/24/solid";
 import Chart from "react-apexcharts";
 import useAuth from "../../auth/useAuth";
+import { useEffect, useState } from "react";
 
 const RangeBarChart = () => {
+  const [series, setSeries] = useState([
+    {
+      data: [
+        { x: "2008", y: [2600, 4420] },
+        { x: "2009", y: [3250, 4100] },
+        { x: "2010", y: [2950, 7800] },
+        { x: "2011", y: [3000, 4600] },
+        { x: "2012", y: [2500, 4100] },
+        { x: "2013", y: [4500, 6500] },
+        { x: "2014", y: [4100, 5600] },
+      ],
+    },
+  ]);
+
+  useEffect(() => {
+    // Intervals: 23s, 2.57min, 5.7min (in ms)
+    const intervals = [23000, 154200, 342000];
+    const getRandomInterval = () => intervals[Math.floor(Math.random() * intervals.length)];
+
+    // Helper to get a random value in range 2500-6750
+    const getRandomValue = () => Math.floor(Math.random() * (6750 - 2500 + 1)) + 2500;
+
+    // Helper to get a random pair with diff in range of 3000
+    const getRandomPair = () => {
+      const max = 6750;
+      const diff = 3000;
+      const y1 = getRandomValue();
+      let y2 = y1 + diff;
+      if (y2 > max) {
+        // If y2 exceeds max, adjust y1 so y2 fits in range
+        y2 = max;
+        // y1 = y2 - diff; // Not strictly needed, but keeps diff at 3000
+      }
+      return [y1, y2];
+    };
+
+    let timeoutId;
+
+    const updateSeries = () => {
+      setSeries((prev) => [
+        {
+          data: prev[0].data.map((item) => ({
+            x: item.x,
+            y: getRandomPair(),
+          })),
+        },
+      ]);
+      timeoutId = setTimeout(updateSeries, getRandomInterval());
+    };
+
+    updateSeries();
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   const options = {
     chart: {
       height: 200,
@@ -31,7 +87,7 @@ const RangeBarChart = () => {
       bar: {
         isDumbbell: true,
         columnWidth: "5%",
-        dumbbellColors: [["#388e3c", "#FFD700"]], // Changed color to #7B1FA2
+        dumbbellColors: [["#4C9AFF", "#FFFFFF"]], // Changed color to #4C9AFF for the first color and white for the second
       },
     },
     legend: {
@@ -41,7 +97,7 @@ const RangeBarChart = () => {
       type: "gradient",
       gradient: {
         type: "vertical",
-        gradientToColors: ["#FFD700"], // Gradient matching the theme
+        gradientToColors: ["#FFFFFF"], // Gradient matching the theme
         inverseColors: true,
         stops: [0, 100],
       },
@@ -67,23 +123,9 @@ const RangeBarChart = () => {
       enabled: false, // Disabled tooltips
     },
     theme: {
-      mode: "dark", // Set to dark theme
+      mode: "transparent", // Set to dark theme
     },
   };
-
-  const series = [
-    {
-      data: [
-        { x: "2008", y: [2800, 4420] },
-        { x: "2009", y: [3250, 4100] },
-        { x: "2010", y: [2950, 7800] },
-        { x: "2011", y: [3000, 4600] },
-        { x: "2012", y: [3500, 4100] },
-        { x: "2013", y: [4500, 6500] },
-        { x: "2014", y: [4100, 5600] },
-      ],
-    },
-  ];
 
   return <Chart options={options} series={series} type='rangeBar' height='200' />;
 };
@@ -108,7 +150,7 @@ const Deposited = () => {
           <BanknotesIcon className='h-7 w-7 text-success-light' />
           {`$${parseFloat(user?.wallet?.totalDeposit || "0.00").toLocaleString()}`}
         </h2>
-        <p className='text-sm text-primary-light'>Amount Deposited</p>
+        <p className='text-sm text-text-light'>Amount Deposited</p>
       </div>
       <RangeBarChart />
     </div>

@@ -51,25 +51,28 @@ const Testimonials = () => {
         <Carousel autoplay={true} loop={true} autoplayDelay={3000} className='mt-10 gsapTestimony'>
           {testimonials.map(({ id, name, role, image, review }) => (
             <div key={id} className='flex justify-center items-center h-[400px]'>
-              <Card className='m-2 shadow-lg' variant='gradient' color='gray'>
+              <Card className='m-2 shadow-lg bg-primary-light text-text-light'>
                 <CardHeader floated={false} className='mx-auto'>
                   <img src={image} alt={name} className='rounded-none object-cover w-32 h-32' />
                 </CardHeader>
+
                 <CardBody className='text-center'>
-                  <Typography variant='h6' className='text-text-light'>
+                  <Typography variant='h6'>
                     {name}
                     <small className='block text-sm text-text-light'>{role}</small>
                   </Typography>
-                  <div className='flex mb-2 justify-self-center'>
+
+                  <div className='flex mb-2 justify-center'>
                     {Array(5)
                       .fill("")
                       .map((_, index) => (
-                        <span key={index} className='text-yellow-500 text-lg'>
+                        <span key={index} className='text-accent text-lg'>
                           ★
                         </span>
                       ))}
                   </div>
-                  <Typography className='text-text-light italic'>{`"${review}"`}</Typography>
+
+                  <Typography className='italic text-text-light'>{`"${review}"`}</Typography>
                 </CardBody>
               </Card>
             </div>

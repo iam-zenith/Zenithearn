@@ -7,19 +7,20 @@ module.exports = withMT({
     extend: {
       colors: {
         primary: {
-          mild: '#616161',
-          light: '#a3a3a3',
-          default: '#424242',
-          dark: '#262626',
+          dark: '#0847A8',    // Bitbucket dark blue
+          default: '#0166FF', // Bitbucket primary blue
+          light: '#4C9AFF',   // Bitbucket accent blue
+          mild: '#B3D4FF',    // Soft background blue
         },
+        accent: '#4C9AFF',       // Can be reused as accent
+        background: '#DFECFF',   // Main background (optional use)
         text: {
-          dark: '#262626',
-          light: '#d8d8d8'
+          dark: '#0847A8',
+          light: '#DFECFF',
         },
-        accent: '#FFD700', // Gold tone inspired by the sun
         warning: {
-          light: '#fff3cd', // A gentle, sunlit yellow
-          dark: '#e0a800', // A deeper gold-orange for emphasis
+          light: '#fff3cd', // Preserved
+          dark: '#e0a800',
         },
         success: {
           light: '#c8e6c9',

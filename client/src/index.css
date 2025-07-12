@@ -9,11 +9,7 @@ html
 
 body
 {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23424242' fill-opacity='0.11' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-body
-{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23ffffff' fill-opacity='0.05' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   @apply bg-primary-dark text-text-light;
 }
 
@@ -45,19 +41,26 @@ input[type="number"]
   @apply flex-1 lg:ml-72 mt-5 py-5 lg:px-5 me-2 lg:mx-0 -ms-6;
 }
 
+.dashboard-box,
+.profile-box,
+.deposit-box
+{
+  @apply bg-primary-default rounded-md shadow-md;
+}
+
 .dashboard-box
 {
-  @apply bg-primary-default rounded-md p-4 shadow-md min-h-32;
+  @apply p-4 min-h-32;
 }
 
 .profile-box
 {
-  @apply bg-primary-default rounded-md p-6 shadow-md min-h-fit;
+  @apply p-6 min-h-fit;
 }
 
 .deposit-box
 {
-  @apply bg-primary-default rounded-md p-2 shadow-md min-h-60 relative;
+  @apply p-2 min-h-60 relative;
 }
 
 /* Basic Box */
@@ -69,19 +72,19 @@ input[type="number"]
 /* Tertiary Box */
 .tertiary-box
 {
-  @apply border border-gray-900 rounded-lg p-4 m-2 shadow-2xl bg-primary-dark text-white;
+  @apply border border-primary-dark rounded-lg p-4 m-2 shadow-2xl bg-primary-dark text-white;
 }
 
 /* Secondary Box */
 .secondary-box
 {
-  @apply border border-gray-700 rounded-lg p-4 m-2 shadow-xl bg-primary-default text-white;
+  @apply border border-primary-dark rounded-lg p-4 m-2 shadow-xl bg-primary-default text-white;
 }
 
 /* Primary Box */
 .primary-box
 {
-  @apply border border-gray-700 rounded-lg p-4 m-2 shadow-lg bg-primary-light text-white;
+  @apply border border-primary-dark rounded-lg p-4 m-2 shadow-lg bg-primary-light text-white;
 }
 
 /* Warning Box */
@@ -105,7 +108,7 @@ input[type="number"]
 /* Accent Box */
 .accent-box-light
 {
-  @apply border border-yellow-800 rounded-lg p-4 m-2 shadow-lg bg-yellow-100 text-yellow-800;
+  @apply border border-accent rounded-lg p-4 m-2 shadow-lg bg-primary-mild text-primary-dark;
 }
 
 /* Accent Box */
@@ -122,7 +125,7 @@ input[type="number"]
 
 .primary-btn:hover
 {
-  @apply bg-primary-dark scale-105;
+  @apply bg-primary-light;
 }
 
 .primary-btn:focus
@@ -162,19 +165,20 @@ input[type="number"]
   @apply ring-2 ring-error-dark ring-opacity-50 outline-none;
 }
 
+/* Accent Button */
 .accent-btn
 {
-  @apply bg-accent text-white py-2 px-2 rounded font-semibold transition-colors duration-500 ease-in-out uppercase hover:bg-yellow-800 disabled:opacity-50 disabled:cursor-none;
+  @apply bg-white text-accent py-2 px-2 rounded font-semibold transition-colors duration-500 ease-in-out uppercase hover:bg-primary-light hover:text-white disabled:opacity-50 disabled:cursor-none;
 }
 
 .accent-btn:focus
 {
-  @apply ring-4 ring-accent ring-opacity-50 outline-none bg-yellow-800;
+  @apply ring-4 ring-primary-light ring-opacity-50 outline-none bg-white text-accent;
 }
 
 .form-input
 {
-  @apply placeholder-primary-light focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent px-4 py-2 bg-primary-default rounded-md border border-primary-mild text-white;
+  @apply placeholder-accent focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent px-4 py-2 bg-primary-mild rounded-md border border-primary-mild text-accent;
 }
 
 .form-input-focus
@@ -204,7 +208,7 @@ input[type="number"]
 
 .nav-link
 {
-  @apply text-sm text-accent hover:underline p-2 font-semibold italic hover:text-yellow-800 transition-all duration-500 delay-100 ease-in-out;
+  @apply text-sm text-accent hover:underline p-2 font-semibold italic hover:text-white transition-all duration-500 delay-100 ease-in-out;
 }
 
 .paragraph
@@ -229,41 +233,32 @@ input[type="number"]
 
 @layer base
 {
-
-  /* Define global scrollbar styles */
   *
   {
     scrollbar-width: thin;
-    /* For Firefox */
     scrollbar-color: theme("colors.accent") transparent;
-    /* For Firefox */
   }
 
   *::-webkit-scrollbar
   {
     width: 4px;
-    /* Thin scrollbar width */
     height: 4px;
-    /* Thin scrollbar height for horizontal scrollbars */
   }
 
   *::-webkit-scrollbar-thumb
   {
     background-color: theme("colors.accent");
-    /* Use accent color */
     border-radius: 9999px;
-    /* Round corners */
   }
 
   *::-webkit-scrollbar-track
   {
     background: transparent;
-    /* Track background */
   }
 
   #google_translate_element select
   {
-    background-color: #262626;
+    background-color: #0847a8;
     color: #ffffff;
   }
 }

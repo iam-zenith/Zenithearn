@@ -84,7 +84,7 @@ const Deposit = () => {
               key={option?.address}
               className={`deposit-box cursor-pointer ${
                 selectedDetails?.address === option?.address
-                  ? "!bg-primary-light text-text-dark shadow-lg"
+                  ? "!bg-primary-light text-text-light shadow-lg"
                   : ""
               }`}
               onClick={() => handleSelectOption(index)}>
@@ -102,7 +102,7 @@ const Deposit = () => {
       </div>
 
       {!isLoading && depositOptions.length === 0 && (
-        <div className='w-full lg:max-w-md mx-auto lg:mx-0 bg-transparent flex flex-row justify-center lg:justify-start text-primary-light space-x-2 p-10 lg:ps-0'>
+        <div className='w-full lg:max-w-md mx-auto lg:mx-0 bg-transparent flex flex-row justify-center lg:justify-start text-text-light space-x-2 p-10 lg:ps-0'>
           <p className='text-sm font-semibold'>No deposit option currently available</p>
           <ExclamationTriangleIcon className='w-5 h-5' />
         </div>
@@ -110,7 +110,7 @@ const Deposit = () => {
 
       {!selectedDetails ? (
         <div
-          className={`w-full h-[50vh] lg:max-w-md mx-auto lg:mx-0 bg-transparent flex flex-row justify-center lg:justify-start text-primary-light space-x-2 p-10 lg:ps-0 ${
+          className={`w-full h-[50vh] lg:max-w-md mx-auto lg:mx-0 bg-transparent flex flex-row justify-center lg:justify-start text-text-light space-x-2 p-10 lg:ps-0 ${
             depositOptions.length === 0 && !isLoading ? "hidden" : ""
           }`}>
           <p className='text-sm font-semibold'>Select a deposit option</p>

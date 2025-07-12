@@ -122,8 +122,7 @@ function DepositCard({ detail }) {
   return (
     <Card
       variant='gradient'
-      color='gray'
-      className='w-full max-w-[96dvh] md:max-w-[26rem] mx-auto md:mx-0'>
+      className='w-full max-w-[96dvh] md:max-w-[26rem] mx-auto md:mx-0 bg-primary-default'>
       <CardHeader shadow={false} floated={false} className='h-96'>
         <DepositOptionImg imageId={details?.qrCode} />
       </CardHeader>
@@ -137,7 +136,7 @@ function DepositCard({ detail }) {
           />
         </div>
         {showprompt && (
-          <p className='text-md text-primary-light mb-2'>
+          <p className='text-md text-text-light mb-2'>
             Account will be funded automatically once transaction has been reviewed. Upload the{" "}
             <span className='highlight'>appropriate receipt</span> for this transaction with{" "}
             <span className='highlight'>amount tallying</span> with what you enter below.

@@ -20,7 +20,7 @@ function AdvancedChart({ symbol = "BITSTAMP:BTCUSD" }) {
       symbol: `${symbol}`,
       interval: "60",
       timezone: "Etc/UTC",
-      theme: "dark",
+      theme: "light",
       style: "1",
       locale: "en",
       gridColor: "rgba(182, 182, 182, 0.06)",

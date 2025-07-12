@@ -124,7 +124,7 @@ const PasswordReset = () => {
             </p>
           )}
           {codeSent && (
-            <p className='text-md text-primary-light mb-2 text-center lg:text-start'>
+            <p className='text-md text-text-light mb-2 text-center lg:text-start'>
               A reset code has been sent to your email. Please note that the code will expire in 5
               minutes. Your next password change will be{" "}
               <span className='highlight'>allowed in 21 days</span>. We strongly recommend securely
@@ -132,7 +132,7 @@ const PasswordReset = () => {
             </p>
           )}
           {!resetAllowed && user && (
-            <p className='text-md text-primary-light mb-2 text-center lg:text-start'>
+            <p className='text-md text-text-light mb-2 text-center lg:text-start'>
               We have located an account associated with the provided email. However, password
               changes are currently restricted, as the last password reset was performed on{" "}
               {user?.lastPasswordChange}

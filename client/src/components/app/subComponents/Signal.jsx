@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { WifiIcon } from "@heroicons/react/24/solid";
 import { useNotification } from "../../layout/NotificationHelper";
@@ -7,13 +8,46 @@ const ProgressChart = () => {
   const { offline } = useNotification();
   const { user } = useAuth();
 
-  const series = [offline ? 0 : user.signal || 0]; // Progress percentage array
+  // Simulated signal state
+  const [simSignal, setSimSignal] = useState(user.signal || 0);
+
+  useEffect(() => {
+    if (offline) {
+      setSimSignal(0);
+      return;
+    }
+
+    // Helper to get a random interval (5, 7, or 13 seconds)
+    const intervals = [5000, 7000, 13000];
+    const getRandomInterval = () => intervals[Math.floor(Math.random() * intervals.length)];
+
+    // Helper to get a random signal in range
+    const getRandomSignal = () => {
+      const min = (user.signal || 0) - 15;
+      const max = (user.signal || 0) + 5;
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+
+    let timeoutId;
+
+    const updateSignal = () => {
+      setSimSignal(getRandomSignal());
+      timeoutId = setTimeout(updateSignal, getRandomInterval());
+    };
+
+    updateSignal();
+
+    return () => clearTimeout(timeoutId);
+  }, [offline, user.signal]);
+
+  const series = [offline ? 0 : simSignal]; // Use simulated signal
+
   const options = {
     chart: {
       type: "radialBar",
       offsetY: 0,
       toolbar: {
-        show: false, // Removes the toolbar
+        // Removes the toolbar
       },
     },
     plotOptions: {
@@ -22,7 +56,7 @@ const ProgressChart = () => {
           size: "45%", // Hollow area size
         },
         track: {
-          background: user.signal >= 0 ? "#262626" : "#d32f2f", // Dark background for track
+          background: simSignal >= 0 ? "#374151" : "#d32f2f", // Darker grey background for track
         },
         dataLabels: {
           show: true,
@@ -31,25 +65,17 @@ const ProgressChart = () => {
           },
           value: {
             fontSize: "16px", // Smaller font size for progress value
-            color: user.signal >= 0 ? "#FFFFFF" : "#d32f2f", // Text color
+            color: "#FFFFFF",
             offsetY: 5,
             show: true, // Shows progress value
           },
         },
-        startAngle: -135, // Makes the bar start at the top-left
-        endAngle: 135, // Ends at the top-right
+        endAngle: 135, // Ends the radial bar at 135 degrees
+        startAngle: -135, // Starts the radial bar at 0 degrees
       },
     },
     fill: {
-      type: "gradient",
-      gradient: {
-        shade: "dark",
-        type: "horizontal",
-        gradientToColors: ["#FFD700"], // Color at 100%
-        stops: [0, 100], // Defines gradient progression
-        colors: ["#388e3c"], // Color at 0%
-        // colors: ["#d32f2f"], // Color at 0%
-      },
+      colors: ["#fff"], // Single color white
     },
     grid: {
       show: false, // Removes the grid
@@ -87,14 +113,12 @@ const ProgressChart = () => {
  */
 const Signal = () => {
   return (
-    <Card className='dashboard-box flex flex-col' variant='gradient' color='gray'>
-      <div className='flex flex-col'>
+    <Card className='dashboard-box flex flex-col' variant='gradient'>
+      <div className='flex flex-col text-text-light'>
         <p className='font-semibold text-xl flex flex-col'>
           <WifiIcon className='h-7 w-7' /> Signal
         </p>
-        <p className='text-sm text-primary-light capitalize'>
-          Higher signal strength gurantees faster earning
-        </p>
+        <p className='text-sm capitalize'>Higher signal strength gurantees faster earning</p>
       </div>
       <div className=''>
         <ProgressChart />

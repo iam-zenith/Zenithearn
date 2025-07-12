@@ -9,14 +9,14 @@ const TradingViewWidget = () => {
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js";
     script.async = true;
     script.innerHTML = JSON.stringify({
-      colorTheme: "dark",
+      colorTheme: "light",
       dateRange: "1D",
       showChart: true,
       locale: "en",
       width: "100%",
       height: "100%",
       largeChartUrl: "",
-      isTransparent: true,
+      isTransparent: false,
       showSymbolLogo: true,
       showFloatingTooltip: true,
       plotLineColorGrowing: "rgba(53, 28, 117, 1)",

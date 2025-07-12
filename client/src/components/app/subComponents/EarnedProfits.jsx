@@ -1,14 +1,40 @@
 import Chart from "react-apexcharts";
 import useAuth from "../../auth/useAuth";
 import { liveTradeIcon } from "../../../assets/icons";
+import { useEffect, useState } from "react";
 
 const AreaChart = () => {
-  const series = [
+  const [series, setSeries] = useState([
     {
       name: "STOCK ABC",
-      data: [8200, 8250, 8230, 8300, 8350],
+      data: [8200, 8250, 8230, 8305, 8350],
     },
-  ];
+  ]);
+
+  useEffect(() => {
+    // Intervals: 36s, 1.7min, 3.57min (in ms)
+    const intervals = [36000, 102000, 214200];
+    const getRandomInterval = () => intervals[Math.floor(Math.random() * intervals.length)];
+
+    // Helper to get a random value in range 7900-8500
+    const getRandomValue = () => Math.floor(Math.random() * (8500 - 7900 + 1)) + 7900;
+
+    let timeoutId;
+
+    const updateSeries = () => {
+      setSeries((prev) => [
+        {
+          ...prev[0],
+          data: prev[0].data.map(() => getRandomValue()),
+        },
+      ]);
+      timeoutId = setTimeout(updateSeries, getRandomInterval());
+    };
+
+    updateSeries();
+
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   const options = {
     chart: {
@@ -34,7 +60,7 @@ const AreaChart = () => {
         },
       },
     },
-    colors: ["#FFD700"], // Sets the area chart color
+    colors: ["#FFFFFF"], // Sets the area chart color
     dataLabels: {
       enabled: false, // Hides data labels
     },
@@ -70,7 +96,7 @@ const AreaChart = () => {
       show: false, // Hides the legend
     },
     theme: {
-      mode: "dark", // Set to dark theme
+      mode: "transparent", // Set to dark theme
     },
   };
 
@@ -110,7 +136,7 @@ const EarnedProfits = () => {
             {formattedProfit}
           </span>
         </h2>
-        <p className='text-sm text-primary-light'> Earned Profits</p>
+        <p className='text-sm text-text-light'> Earned Profits</p>
       </div>
       <AreaChart />
     </div>

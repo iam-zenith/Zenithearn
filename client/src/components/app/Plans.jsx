@@ -166,7 +166,10 @@ export default function PricingCard() {
           <Loader />
         ) : (
           currentPlans.map((plan, index) => (
-            <Card key={index} color='gray' variant='gradient' className='w-full p-6'>
+            <Card
+              key={index}
+              variant='gradient'
+              className='w-full p-6 bg-primary-default text-text-light'>
               <CardHeader
                 floated={false}
                 shadow={false}
@@ -217,25 +220,22 @@ export default function PricingCard() {
         <Button
           onClick={handlePrevPage}
           disabled={currentPage === 1}
-          className='bg-primary-mild text-text-dark hover:bg-primary-light'>
+          className='bg-primary-mild text-text-light hover:bg-primary-light'>
           Previous
         </Button>
-        <Typography variant='small' color='gray'>
+        <Typography variant='small'>
           Page {currentPage} of {totalPages} ({plans.length} items)
         </Typography>
         <Button
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
-          className='bg-primary-mild text-text-dark hover:bg-primary-light'>
+          className='bg-primary-mild text-text-light hover:bg-primary-light'>
           Next
         </Button>
       </div>
       {/* Action on selected plan */}
       {selectedPlan && !isloading && (
-        <Card
-          variant='gradient'
-          color='gray'
-          className='w-full md:max-w-md mx-auto md:mx-0 p-6 mt-4'>
+        <Card variant='gradient' className='w-full md:max-w-md mx-auto md:mx-0 p-6 mt-4'>
           <div className='flex justify-between'>
             <Typography variant='h5' className='mb-4'>
               Selected Plan: {selectedPlan.name}
@@ -247,7 +247,7 @@ export default function PricingCard() {
             />
           </div>
           {showPrompt && (
-            <div className='text-sm text-primary-light py-4'>
+            <div className='text-sm text-text-light py-4'>
               <p>
                 Investments run autonomously but must undergo review to ensure compliance with our
                 terms of service.

@@ -55,13 +55,13 @@ const TradeSimulation = ({ trade }) => {
 
   const getPriceColor = () => {
     if (currentPrice == null) return "text-text-light";
-    if (currentPrice > entryPrice) return "text-success-dark";
+    if (currentPrice > entryPrice) return "text-white";
     if (currentPrice < entryPrice) return "text-error-dark";
     return "text-gray-400";
   };
 
   return (
-    <Card variant='gradient' color='gray' className='w-full mb-4'>
+    <Card variant='gradient' className='w-full mb-4 bg-primary-default'>
       <CardBody className='text-text-light py-4 space-y-2'>
         <div className='flex flex-row justify-between'>
           <p className='text-xs text-primary-mild uppercase'>{type}</p>

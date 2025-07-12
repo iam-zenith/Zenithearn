@@ -70,7 +70,7 @@ const CopyTradeCard = ({
   };
 
   return (
-    <Card color='gray' variant='gradient' className='w-full p-6'>
+    <Card variant='gradient' className='w-full p-6 bg-primary-default text-white'>
       <CardHeader
         floated={false}
         shadow={false}

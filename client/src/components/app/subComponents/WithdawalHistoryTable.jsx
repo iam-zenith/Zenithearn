@@ -106,11 +106,13 @@ const WithdrawalHistoryTable = () => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
-    <Card className='text-text-light w-full rounded-lg shadow-md' variant='gradient' color='gray'>
+    <Card
+      className='text-text-light w-full rounded-lg shadow-md bg-primary-default'
+      variant='gradient'>
       <div className='flex flex-wrap justify-between items-center p-2 min-w-96'>
         <div>
           <h3 className='text-lg font-semibold'>Withdrawal History</h3>
-          <p className='text-sm text-primary-light'>Overview of your transactions.</p>
+          <p className='text-sm text-text-light'>Overview of your transactions.</p>
         </div>
         <div className='mt-3 sm:mt-0'>
           <div className='relative w-full max-w-sm'>
@@ -121,7 +123,7 @@ const WithdrawalHistoryTable = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
               className='w-full form-input'
             />
-            <MagnifyingGlassIcon className='w-4 h-4 absolute top-1/2 right-3 transform -translate-y-1/2 text-primary-light' />
+            <MagnifyingGlassIcon className='w-4 h-4 absolute top-1/2 right-3 transform -translate-y-1/2 text-text-light' />
           </div>
         </div>
       </div>
@@ -135,14 +137,14 @@ const WithdrawalHistoryTable = () => {
               value={status}
               checked={filterStatus === status}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className='text-primary-light focus:ring-primary-light'
+              className='text-text-light focus:ring-primary-light'
             />
             <span className='text-sm capitalize'>{status}</span>
           </label>
         ))}
         <TrashIcon
           title='Clear filters'
-          className='w-4 h-4 text-primary-light hover:scale-105 transition-all delay-100 hover:text-error-light duration-500'
+          className='w-4 h-4 text-text-light hover:scale-105 transition-all delay-100 hover:text-error-light duration-500'
           onClick={() => {
             setFilterStatus("");
             setSearchQuery("");

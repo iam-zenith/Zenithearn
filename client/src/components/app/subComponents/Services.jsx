@@ -46,10 +46,10 @@ const ServicesSection = () => {
     <section className='overflow-hidden bg-primary-default min-h-screen'>
       <div className='container mx-auto px-4 py-20'>
         <div className='text-center mb-8 gsapService'>
-          <Typography variant='h4' className='mb-4 text-text-light'>
+          <Typography variant='h4' className='mb-4 text-white'>
             Explore Our Services
           </Typography>
-          <Typography variant='paragraph' className='text-gray-600 max-w-xl mx-auto'>
+          <Typography variant='paragraph' className='text-text-light max-w-xl mx-auto'>
             Our mission is to ensure you have a seamless and rewarding trading experience!
           </Typography>
         </div>
@@ -59,9 +59,8 @@ const ServicesSection = () => {
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className='p-4 shadow-md gsapServices'
-                variant='gradient'
-                color='gray'>
+                className='p-4 shadow-md gsapServices bg-primary-light'
+                variant='gradient'>
                 <CardBody className='flex items-start'>
                   <div className='flex-shrink-0 mr-4'>
                     <div className='w-12 h-12 flex items-center justify-center bg-accent rounded-full text-text-light'>
@@ -69,10 +68,10 @@ const ServicesSection = () => {
                     </div>
                   </div>
                   <div>
-                    <Typography variant='h6' className='mb-2 text-text-light'>
+                    <Typography variant='h6' className='mb-2 text-white'>
                       {feature.title}
                     </Typography>
-                    <Typography variant='paragraph' className='text-gray-600'>
+                    <Typography variant='paragraph' className='text-text-light'>
                       {feature.description}
                     </Typography>
                   </div>

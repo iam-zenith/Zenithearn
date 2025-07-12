@@ -152,7 +152,7 @@ const KYCUpload = () => {
     return setshowKYC((prev) => !prev);
   };
   return (
-    <Card className='w-full max-w-4xl profile-box' variant='gradient' color='gray'>
+    <Card className='w-full max-w-4xl profile-box text-white' variant='gradient'>
       <h2 className='text-lg font-semibold mb-4 flex justify-between'>
         {user?.KYC
           ? data?.state
@@ -166,7 +166,7 @@ const KYCUpload = () => {
         />
       </h2>
       {showKYC && (
-        <p className='text-sm text-primary-light mb-2'>
+        <p className='text-sm text-text-light mb-2'>
           Know Your Customer (KYC) is a process to verify client identities, ensuring compliance,
           preventing fraud, and building trust. By collecting and verifying personal information
           like IDs and addresses, helps us enhance security, comply with regulations, and boost user
@@ -174,7 +174,7 @@ const KYCUpload = () => {
         </p>
       )}
       {user?.KYC === data?._id && !data.state && (
-        <p className='text-md text-primary-light mb-2'>
+        <p className='text-md text-text-light mb-2'>
           Please allow a few business days for us to thoroughly review the uploaded documents. If
           verification is not completed within five business days, we recommend exploring an
           alternative method for completing your KYC. Kindly note that{" "}
@@ -189,7 +189,7 @@ const KYCUpload = () => {
       ) : data ? (
         <div>
           <p>
-            <strong className='text-primary-light'>Status:</strong>{" "}
+            <strong className='text-text-light'>Status:</strong>{" "}
             {data?.state ? (
               <span>
                 Verified{" "}
@@ -203,15 +203,15 @@ const KYCUpload = () => {
             )}
           </p>
           <p>
-            <strong className='text-primary-light'>Document used:</strong> {data?.type}
+            <strong className='text-text-light'>Document used:</strong> {data?.type}
           </p>
           <p>
-            <strong className='text-primary-light'>Updated at:</strong>{" "}
+            <strong className='text-text-light'>Updated at:</strong>{" "}
             {formatToNewYorkTime(data?.updatedAt)}
           </p>
         </div>
       ) : (
-        <p className='text-md text-primary-light mb-2'>
+        <p className='text-md text-text-light mb-2'>
           Please upload your KYC documents to proceed with verification.
         </p>
       )}

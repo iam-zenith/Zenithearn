@@ -118,8 +118,8 @@ const Withdrawal = () => {
   };
 
   return (
-    <Card variant='gradient' color='gray' className='w-full md:max-w-md mx-auto md:mx-0'>
-      <CardBody className='text-text-light space-y-4'>
+    <Card variant='gradient' className='w-full md:max-w-md mx-auto md:mx-0 bg-primary-default'>
+      <CardBody className='text-white space-y-4'>
         <div className='flex justify-between items-center'>
           <h2 className='text-2xl font-semibold capitalize'>Withdrawal Request</h2>
           <QuestionMarkCircleIcon
@@ -135,7 +135,7 @@ const Withdrawal = () => {
         </p>
 
         {showPrompt && (
-          <div className='text-sm text-primary-light'>
+          <div className='text-sm text-text-light'>
             <p>
               Withdrawals are fast but must undergo review to ensure anti-fradulent or exploitive
               behaviour.

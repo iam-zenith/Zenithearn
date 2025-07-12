@@ -64,7 +64,7 @@ const ProfilePage = () => {
   return (
     <div className='min-h-screen flex flex-col space-y-4'>
       {/* Header */}
-      <Card className='w-full max-w-4xl profile-box relative' variant='gradient' color='gray'>
+      <Card className='w-full max-w-4xl profile-box relative' variant='gradient'>
         {user?.imageFilename ? (
           <Profilepic />
         ) : (
@@ -77,9 +77,9 @@ const ProfilePage = () => {
           </div>
         )}
         {/* User Information */}
-        <div className='ml-32'>
-          <h1 className='text-2xl font-bold text-text-light'>{user?.fullName}</h1>
-          <p className='text-sm text-primary-light capitalize'>
+        <div className='ml-32 text-text-light'>
+          <h1 className='text-2xl font-bold'>{user?.fullName}</h1>
+          <p className='text-sm capitalize'>
             {user?.gender} | {user?.country}
           </p>
         </div>
@@ -88,49 +88,46 @@ const ProfilePage = () => {
       {/* Main Section */}
       <div className='w-full max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-4'>
         {/* Personal Info Section */}
-        <Card className='profile-box' variant='gradient' color='gray'>
-          <h2 className='text-lg font-semibold text-text-light mb-4'>Personal Info</h2>
+        <Card className='profile-box text-text-light' variant='gradient'>
+          <h2 className='text-lg font-semibold  mb-4'>Personal Info</h2>
           <div className='space-y-4'>
             <p>
-              <strong className='text-primary-light'>Email:</strong> {user?.email}
+              <strong>Email:</strong> {user?.email}
             </p>
             <p>
-              <strong className='text-primary-light'>Phone Number:</strong> {user?.phoneNumber}
+              <strong>Phone Number:</strong> {user?.phoneNumber}
             </p>
             <p>
-              <strong className='text-primary-light'>Country:</strong> {user?.country}
+              <strong>Country:</strong> {user?.country}
             </p>
             <p className='capitalize'>
-              <strong className='text-primary-light'>Gender:</strong> {user?.gender}
+              <strong>Gender:</strong> {user?.gender}
             </p>
           </div>
         </Card>
 
         {/* Account Info Section */}
-        <Card className='profile-box' variant='gradient' color='gray'>
+        <Card className='profile-box text-text-light' variant='gradient'>
           <h2 className='text-lg font-semibold text-text-light mb-4'>Account Info</h2>
           <div className='space-y-4'>
             <p>
-              <strong className='text-primary-light'>Account Status:</strong>{" "}
-              {user?.active ? "Active" : "Inactive"}
+              <strong>Account Status:</strong> {user?.active ? "Active" : "Inactive"}
             </p>
             <p>
-              <strong className='text-primary-light'>Registered:</strong>{" "}
-              {formatToNewYorkTime(user?.createdAt)}
+              <strong>Registered:</strong> {formatToNewYorkTime(user?.createdAt)}
             </p>
             {user?.lastSeen && (
               <p>
-                <strong className='text-primary-light'>Last Seen:</strong>{" "}
-                {formatToNewYorkTime(user.lastSeen)}
+                <strong>Last Seen:</strong> {formatToNewYorkTime(user.lastSeen)}
               </p>
             )}
             {loading ? (
               <p>
-                <strong className='text-primary-light'>KYC Status:</strong> Checking status...
+                <strong>KYC Status:</strong> Checking status...
               </p>
             ) : (
               <p>
-                <strong className='text-primary-light'>KYC Status:</strong>{" "}
+                <strong>KYC Status:</strong>{" "}
                 {data?.state ? (
                   <span>
                     Verified{" "}

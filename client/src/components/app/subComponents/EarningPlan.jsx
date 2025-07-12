@@ -13,41 +13,32 @@ import Loader from "./Loader";
 import { formatToNewYorkTime } from "../../../assets/helpers";
 
 const PolarChart = () => {
-  /**
-   * Configuration options for the Polar Area chart.
-   *
-   * @type {Object}
-   * @property {Array<number>} series - Data series for the chart.
-   * @property {Object} chart - Chart configuration.
-   * @property {number} chart.width - Width of the chart.
-   * @property {string} chart.type - Type of the chart.
-   * @property {Array<string>} labels - Labels for the data series.
-   * @property {Object} fill - Fill configuration.
-   * @property {number} fill.opacity - Opacity of the fill.
-   * @property {Object} stroke - Stroke configuration.
-   * @property {number} stroke.width - Width of the stroke.
-   * @property {Array<string>|undefined} stroke.colors - Colors of the stroke.
-   * @property {Object} yaxis - Y-axis configuration.
-   * @property {boolean} yaxis.show - Whether to show the Y-axis.
-   * @property {Object} legend - Legend configuration.
-   * @property {boolean} legend.show - Whether to show the legend.
-   * @property {Object} tooltip - Tooltip configuration.
-   * @property {boolean} tooltip.enabled - Whether to enable tooltips.
-   * @property {Object} plotOptions - Plot options configuration.
-   * @property {Object} plotOptions.polarArea - Polar Area specific options.
-   * @property {Object} plotOptions.polarArea.rings - Rings configuration.
-   * @property {number} plotOptions.polarArea.rings.strokeWidth - Stroke width of the rings.
-   * @property {Object} plotOptions.polarArea.spokes - Spokes configuration.
-   * @property {number} plotOptions.polarArea.spokes.strokeWidth - Stroke width of the spokes.
-   * @property {Object} theme - Theme configuration.
-   * @property {Object} theme.monochrome - Monochrome theme configuration.
-   * @property {boolean} theme.monochrome.enabled - Whether to enable monochrome theme.
-   * @property {string} theme.monochrome.color - Base color for the monochrome theme.
-   * @property {string} theme.monochrome.shadeTo - Shade direction for the monochrome theme.
-   * @property {number} theme.monochrome.shadeIntensity - Shade intensity for the monochrome theme.
-   */
+  // Simulated series state
+  const [series, setSeries] = useState([30, 60, 40, 80, 50]);
+
+  useEffect(() => {
+    // Helper to get a random interval (1 min, 3 mins, or 7 mins)
+    const intervals = [60000, 180000, 420000];
+    const getRandomInterval = () => intervals[Math.floor(Math.random() * intervals.length)];
+
+    // Helper to get a random value in range 5-95
+    const getRandomValue = () => Math.floor(Math.random() * (95 - 5 + 1)) + 5;
+
+    let timeoutId;
+
+    const updateSeries = () => {
+      // Generate a new array with random values between 5 and 95
+      setSeries(series.map(() => getRandomValue()));
+      timeoutId = setTimeout(updateSeries, getRandomInterval());
+    };
+
+    updateSeries();
+
+    return () => clearTimeout(timeoutId);
+    // eslint-disable-next-line
+  }, []);
+
   const options = {
-    series: [42, 47, 52, 58, 65],
     chart: {
       width: 300,
       type: "polarArea",
@@ -55,43 +46,41 @@ const PolarChart = () => {
     labels: ["Rose A", "Rose B", "Rose C", "Rose D", "Rose E"],
     fill: {
       opacity: 1,
+      colors: ["#ffffff"],
     },
     stroke: {
       width: 2,
-      colors: undefined,
+      colors: ["#4C9AFF"],
     },
     yaxis: {
-      show: false, // Hide Y-axis
+      show: false,
     },
     legend: {
-      show: false, // Disable legend
+      show: false,
     },
     tooltip: {
-      enabled: false, // Disable tooltips
+      enabled: false,
     },
     plotOptions: {
       polarArea: {
         rings: {
-          strokeWidth: 0, // Remove the ring borders
+          strokeWidth: 0,
         },
         spokes: {
-          strokeWidth: 0, // Remove the spokes
+          strokeWidth: 0,
         },
       },
     },
     theme: {
       monochrome: {
-        enabled: true,
-        color: "#388e3c",
-        shadeTo: "light",
-        shadeIntensity: 0.5,
+        enabled: false,
       },
     },
   };
 
   return (
     <div id='chart'>
-      <Charts options={options} series={options.series} type='polarArea' width={300} />
+      <Charts options={options} series={series} type='polarArea' width={300} />
     </div>
   );
 };
@@ -135,11 +124,11 @@ const Earning = () => {
   const displayDate = formattedDate.startsWith("Error:") ? "Unavailable" : formattedDate;
 
   return (
-    <Card className='dashboard-box flex flex-col !pb-0' variant='gradient' color='gray'>
+    <Card className='dashboard-box flex flex-col !pb-0' variant='gradient'>
       {loading ? (
         <Loader />
       ) : (
-        <div className='flex flex-col'>
+        <div className='flex flex-col text-text-light'>
           <h2 className='font-semibold text-xl flex flex-col'>
             <div className='flex flex-row justify-between'>
               <SquaresPlusIcon className='h-7 w-7' />
@@ -156,8 +145,8 @@ const Earning = () => {
             {currentPlan?.plan?.name || "Unavailable"}
           </h2>
           <div className='flex flex-row justify-between'>
-            <p className='text-sm text-primary-light capitalize'>Current plan</p>
-            <p className='text-sm text-primary-light' title='Expires'>
+            <p className='text-sm text-text-light capitalize'>Current plan</p>
+            <p className='text-sm text-text-light' title='Expires'>
               {displayDate}
             </p>
           </div>

@@ -70,7 +70,7 @@ const FAQs = () => {
       <div className='container mx-auto px-4'>
         {/* Section Header */}
         <div className='text-center mb-12 gsapFAQs'>
-          <h4 className='text-2xl font-semibold mb-4'>Find the help you need!</h4>
+          <h4 className='text-2xl font-semibold mb-4 text-white'>Find the help you need!</h4>
           <p className='text-text-light max-w-2xl mx-auto'>
             Find all the help you need with our amiable customer service. They are always ready and
             available to serve you better.
@@ -83,11 +83,10 @@ const FAQs = () => {
             <Card
               key={index}
               variant='gradient'
-              color='gray'
-              className='p-6 text-center shadow-md gsapFAQs'>
+              className='p-6 text-center shadow-md gsapFAQs bg-primary-light'>
               <div className='flex flex-row justify-center gap-4'>
-                <div className='text-text-light mb-4 text-4xl'>{feature.icon}</div>
-                <h5 className='text-lg font-medium text-text-light'>{feature.title}</h5>
+                <div className='text-white mb-4 text-4xl'>{feature.icon}</div>
+                <h5 className='text-lg font-medium text-white'>{feature.title}</h5>
               </div>
               <p className='text-text-light mt-3'>{feature.description}</p>
             </Card>
@@ -122,7 +121,7 @@ const FAQs = () => {
       {/* Sign-Up Section */}
       <section className='py-12 bg-primary-default gsapFAQs'>
         <div className='container mx-auto px-4'>
-          <div className='p-8 bg-accent text-white rounded-lg'>
+          <div className='p-8 bg-primary-dark text-white rounded-lg'>
             <div className='flex flex-wrap items-center'>
               <div className='w-full md:w-8/12 mb-8 md:mb-0'>
                 <h4 className='text-2xl font-bold mb-4'>The Better Way to Trade & Invest</h4>

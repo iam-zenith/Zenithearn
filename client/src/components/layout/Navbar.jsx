@@ -6,22 +6,30 @@ function NavList() {
   return (
     <ul className='my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6'>
       <Typography as='li' variant='small' className='p-1 font-medium'>
-        <a href='/about' className='flex items-center hover:text-accent transition-colors'>
+        <a
+          href='/about'
+          className='flex items-center text-text-light hover:text-white transition-all duration-500 delay-100 ease-in-out'>
           About
         </a>
       </Typography>
       <Typography as='li' variant='small' className='p-1 font-medium'>
-        <a href='#Plans' className='flex items-center hover:text-accent transition-colors'>
+        <a
+          href='#Plans'
+          className='flex items-center text-text-light hover:text-white transition-all duration-500 delay-100 ease-in-out'>
           Plans
         </a>
       </Typography>
       <Typography as='li' variant='small' className='p-1 font-medium'>
-        <a href='#FAQs' className='flex items-center hover:text-accent transition-colors'>
+        <a
+          href='#FAQs'
+          className='flex items-center text-text-light hover:text-white transition-all duration-500 delay-100 ease-in-out'>
           FAQs
         </a>
       </Typography>
       <Typography as='li' variant='small' className='p-1 font-medium'>
-        <a href='/contact' className='flex items-center hover:text-accent transition-colors'>
+        <a
+          href='/contact'
+          className='flex items-center text-text-light hover:text-white transition-all duration-500 delay-100 ease-in-out'>
           Contact
         </a>
       </Typography>
@@ -54,7 +62,7 @@ export default function NavbarLanding() {
             <p>Zenithearn</p>
           </Link>
         </Typography>
-        <div className='hidden lg:block text-text-light'>
+        <div className='hidden lg:block nav-link'>
           <NavList />
         </div>
         <div className='flex flex-row'>

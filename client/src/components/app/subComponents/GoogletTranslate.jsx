@@ -33,7 +33,7 @@ function GoogleTranslateToggle() {
         title='Translate'
         className='absolute -top-9 right-0 z-50 bg-primary-light hover:bg-white rounded-full p-2 shadow-md hover:scale-110 transition-all duration-300'
         aria-label='Toggle Google Translate'>
-        <LanguageIcon className='h-3 w-3 md:h-4 md:w-4 text-text-dark' />
+        <LanguageIcon className='h-3 w-3 md:h-4 md:w-4 text-text-light' />
       </button>
 
       {/* Google Translate container */}

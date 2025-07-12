@@ -163,8 +163,6 @@ const VisualLiveTrade = () => {
         if (success) {
           setSimulateKey((prev) => prev + 1); // trigger SimulateLiveTrade rerender
         }
-        // todo use success to trigger some new render action
-        // success && navigate("/app/transaction?tab=LiveTrade");
       }
     } catch (error) {
       addNotification("An error occurred during trade creation", "error");
@@ -188,7 +186,7 @@ const VisualLiveTrade = () => {
         </div>
         {/* Options - 4/12 */}
         <div className='md:col-span-4'>
-          <Card variant='gradient' color='gray' className='w-full mx-auto'>
+          <Card variant='gradient' className='w-full mx-auto bg-primary-default'>
             <CardBody className='text-text-light space-y-4'>
               <div className='flex justify-between items-center'>
                 <h2 className='text-2xl font-semibold capitalize'>Create Live Trade</h2>
@@ -204,7 +202,7 @@ const VisualLiveTrade = () => {
               </p>
 
               {showPrompt && (
-                <div className='text-sm text-primary-light'>
+                <div className='text-sm text-text-light'>
                   <p>
                     Welcome to the live trading platform.
                     <br />
