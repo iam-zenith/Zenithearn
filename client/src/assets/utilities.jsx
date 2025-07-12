@@ -5,7 +5,7 @@ import PlaceholderQrCode from "./illustrations/Placeholder-QRCode-400x400.svg";
 import PlaceholderProfile from "./illustrations/Placeholder-profileImage-100x100.svg";
 import Placeholder10 from "./illustrations/Placeholder-10x10.svg";
 import AboutIllustration from "./illustrations/aboutIllustration.png";
-import HeroIllustration from "./illustrations/heroIllustration2.webp";
+import HeroIllustration from "./illustrations/heroIllustration2.jpg";
 import PhoneIllustration from "./illustrations/phoneIllustration.png";
 import LaptopIllustration from "./illustrations/laptopIllustration.png";
 import Testimony1 from "./illustrations/tesimonial1.png";
