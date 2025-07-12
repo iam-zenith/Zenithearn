@@ -7,13 +7,12 @@ module.exports = withMT({
     extend: {
       colors: {
         primary: {
-          dark: '#0847A8',    // Bitbucket dark blue
-          default: '#0166FF', // Bitbucket primary blue
-          light: '#4C9AFF',   // Bitbucket accent blue
-          mild: '#B3D4FF',    // Soft background blue
+          dark: '#01296E',
+          default: '#003689',
+          light: '#4C9AFF',
+          mild: '#B3D4FF',
         },
         accent: '#4C9AFF',       // Can be reused as accent
-        background: '#DFECFF',   // Main background (optional use)
         text: {
           dark: '#0847A8',
           light: '#DFECFF',

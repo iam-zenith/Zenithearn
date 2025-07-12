@@ -134,7 +134,7 @@ const LiveTradeHistoryTable = () => {
           <Loader />
         ) : (
           <table className='w-full text-left text-sm'>
-            <thead className='bg-primary-mild'>
+            <thead className='bg-primary-light'>
               <tr>
                 <th className='p-4'>Trade ID</th>
                 <th className='p-4'>Trade Type</th>
