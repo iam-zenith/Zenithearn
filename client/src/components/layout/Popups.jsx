@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Alert } from "@material-tailwind/react";
 
-const intervals = [38000, 15000, 5000, 27000, 45000];
+const intervals = [38000, 15000, 5000, 27000, 45000, 3800, 2700, 4500];
 
 function getRandomInterval() {
   return intervals[Math.floor(Math.random() * intervals.length)];
