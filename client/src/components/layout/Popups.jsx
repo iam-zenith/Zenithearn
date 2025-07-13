@@ -2,15 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Alert } from "@material-tailwind/react";
 
 const intervals = [
-  48000, // 48 secs
-  60000, // 1 min
-  90000, // 1 min 30 secs
-  120000, // 2 mins
-  253800, // ~4 min 13 secs
-  372000, // ~6 min 12 secs
+  38000, // 48 secs
+  15000, // 15 secs
   45000, // 45 secs
-  105000, // 1 min 45 secs
-  75000, // 1 min 15 secs
 ];
 
 function getRandomInterval() {
