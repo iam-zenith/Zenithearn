@@ -25,7 +25,6 @@ import FooterLanding from "./layout/FooterLanding";
 import Navbar from "./layout/Navbar";
 import Contact from "./app/Contact";
 import About from "./app/About";
-// import Chatbot from "./layout/Chatbot";
 import Smartsupp from "./layout/Smartsupp";
 import CopyTrade from "./app/CopyTrade";
 import VisualLiveTrade from "./app/VisualLiveTrade";
@@ -37,7 +36,6 @@ export default function Router() {
         <Outlet />
         <NotificationDisplay />
         <FooterLanding />
-        {/* <Chatbot /> */}
         <Smartsupp />
       </>
     );
@@ -58,7 +56,6 @@ export default function Router() {
 
         {/* Notifications */}
         <NotificationDisplay />
-        {/* <Chatbot /> */}
         <Smartsupp />
       </div>
     );
@@ -71,7 +68,6 @@ export default function Router() {
         <NotificationDisplay />
         <FooterAuth />
         <Smartsupp />
-        {/* <Chatbot /> */}
       </>
     );
   };

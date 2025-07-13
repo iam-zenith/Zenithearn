@@ -10,7 +10,7 @@ const Hero = () => {
       {/* Text Section */}
       <div className='lg:max-w-xl hero'>
         <h1 className='text-4xl font-bold mb-4'>A Smarter Approach to Trading & Investing</h1>
-        <p className='text-lg text-gray-600 mb-6'>
+        <p className='text-lg text-text-light mb-6'>
           We&apos;ve empowered over 1.3 million customers to reach their financial goals by making
           trading and investing effortless.
         </p>
