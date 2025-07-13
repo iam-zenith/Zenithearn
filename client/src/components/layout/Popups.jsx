@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Alert } from "@material-tailwind/react";
 
-const intervals = [
-  38000, // 48 secs
-  15000, // 15 secs
-  45000, // 45 secs
-];
+const intervals = [38000, 15000, 5000, 27000, 45000];
 
 function getRandomInterval() {
   return intervals[Math.floor(Math.random() * intervals.length)];
@@ -95,8 +91,8 @@ const Popups = () => {
     function showPopup() {
       setPopupIdx((prev) => (prev + 1) % popUps.length);
       setOpen(true);
-      // Auto-dismiss after 30s
-      timeoutRef.current = setTimeout(() => setOpen(false), 30000);
+      // Auto-dismiss after 20s
+      timeoutRef.current = setTimeout(() => setOpen(false), 20000);
       // Schedule next popup
       intervalRef.current = setTimeout(showPopup, getRandomInterval());
     }
