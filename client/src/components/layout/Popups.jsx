@@ -56,8 +56,8 @@ const popUps = Array.from({ length: 20 }, (_, i) => {
     "Nina Ivanova",
   ];
   const networks = ["Bitcoin", "Ethereum", "USDT"];
-  // Generate a random amount between 200 and 30000
-  const amount = Math.floor(Math.random() * (50000 - 200 + 1)) + 200;
+  // Generate a random amount between 200 and 50000, including decimals
+  const amount = (Math.random() * (50000 - 200) + 200).toFixed(2);
   // Generate a random date within the past 7 days
   const now = new Date();
   const pastWeek = new Date(now.getTime() - Math.random() * 7 * 24 * 60 * 60 * 1000);
@@ -72,13 +72,16 @@ const popUps = Array.from({ length: 20 }, (_, i) => {
     hour12: true,
   };
   const formattedTime = pastWeek.toLocaleString("en-US", options);
+  const action = Math.random() < 0.5 ? "traded" : "withdrew";
   return {
     id: i + 1,
     name,
     amount,
     network,
     timeStamp: pastWeek,
-    content: `${name} withdrew $${amount} via ${network} at ${formattedTime}`,
+    content: `${name} ${action} $${Number(
+      amount
+    ).toLocaleString()} via ${network} at ${formattedTime}`,
   };
 });
 const Popups = () => {
