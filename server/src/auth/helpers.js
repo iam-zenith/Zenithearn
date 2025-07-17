@@ -6,19 +6,24 @@ import nodemailer from 'nodemailer'
 async function generateAccessToken(user) {
     return JWT.sign(user, process.env.JWT_ACCESS_TOKEN_SECRET, { expiresIn: '168h' })
 }
+// ** Helper for sending emails
 const mail = async (email, subject, html) => {
-    // Use environment variables for credentials
     const MAILER_USERNAME = process.env.MAILER_USERNAME;
     const MAILER_PASSWORD = process.env.MAILER_PASSWORD;
+    const DKIM_PRIVATE_KEY = process.env.DKIM_PRIVATE_KEY;
 
-    // Configure Nodemailer with Namecheap's Private Email settings
     const transporter = nodemailer.createTransport({
-        host: "mail.privateemail.com", // Namecheap's server, do not change
-        port: 465,                    // SSL port; use 587 for TLS/STARTTLS if needed
-        secure: true,                 // true for port 465 (SSL)
+        host: "mail.privateemail.com",
+        port: 465,
+        secure: true,
         auth: {
             user: MAILER_USERNAME,
             pass: MAILER_PASSWORD,
+        },
+        dkim: {
+            domainName: "zenithearn.com",
+            keySelector: "default",
+            privateKey: DKIM_PRIVATE_KEY.replace(/\\n/g, '\n'),
         },
     });
 
@@ -29,21 +34,20 @@ const mail = async (email, subject, html) => {
                 address: MAILER_USERNAME,
             },
             to: email,
-            subject: subject,
-            html: html,
+            subject,
+            text: html.replace(/<[^>]+>/g, ''), // strip HTML tags for fallback
+            html,
+            replyTo: MAILER_USERNAME,
         });
 
-        // Check if the email was accepted by the SMTP server
-        if (info.accepted.includes(email)) {
-            return true;
-        }
-        return false;
+        console.log("Email sent:", info.messageId);
+
+        return info.accepted.includes(email);
     } catch (error) {
-        console.error("Error sending upgrade email:", error);
+        console.error("❌ Client Mail Error:", error.message);
         return false;
     }
 };
-
 async function checkPasswordChange(startDate, interval = 21) {
     // Convert the input to a Date object
     const start = new Date(startDate);
