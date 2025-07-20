@@ -44,8 +44,38 @@ Router.route('/register')
                 verificationToken,
             });
 
+            // todo  Uncomment when email is configured
             // const verificationLink = `${process.env.CLIENT_URL}/?token=${verificationToken}`;
             // user && await mail(email, 'Verify Your Email', `Please verify your email using this link within the next 24 hours: ${verificationLink}`);
+
+            // Send a congratulatory email (no verification required)
+            try {
+                await mail(
+                    email,
+                    'Welcome to ZenithEarn 🎉',
+                    {
+                        header: 'Activate your account today!',
+                        message: [
+                            `Dear ${fullName},`,
+                            '',
+                            'Welcome to ZenithEarn Trading! We’re thrilled to have you on board. Your new trading account has been successfully created, and you’re now part of a growing community of smart investors and traders taking control of their financial future.',
+                            '',
+                            'You can now access your dashboard, explore trading tools, and start building your portfolio with confidence.',
+                            '',
+                            'If you ever need assistance, our support team is just a message away.',
+                            '',
+                            'Let’s grow together.',
+                            'Happy trading!',
+                            '',
+                            'Warm regards,',
+                            'The ZenithEarn Team',
+                            '📈 Trade Smart. Earn More.'
+                        ]
+                    }
+                );
+            } catch (mailError) {
+                console.error('Error sending welcome email:', mailError);
+            }
             res.status(201).json({ message: 'Registration successful' });
         } catch (error) {
             console.log(error);

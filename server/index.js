@@ -57,6 +57,5 @@ app.use('/api/auth', authRouter);
 
 // Root endpoint
 app.get('/', (req, res) => res.json({ message: 'Get a life bro!' }));
-
 // Start server
 app.listen(port, () => console.log(`Client server listening on http://localhost:${port}/`));
